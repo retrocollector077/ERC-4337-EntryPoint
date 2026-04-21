@@ -1,0 +1,388 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="ae508556-02ef-20af-4783-6f034f945ca1")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,566866,e=>{e.v({measureBar:"CollaboratorCountV2-module__rHWLIa__measureBar",nonInteractive:"CollaboratorCountV2-module__rHWLIa__nonInteractive"})},210266,e=>{e.v({accessLabel:"OrgReplPermissionsV2-module__uejJjG__accessLabel",inviteInputWrapper:"OrgReplPermissionsV2-module__uejJjG__inviteInputWrapper",inviteSearchRow:"OrgReplPermissionsV2-module__uejJjG__inviteSearchRow",pendingAvatar:"OrgReplPermissionsV2-module__uejJjG__pendingAvatar",pendingRow:"OrgReplPermissionsV2-module__uejJjG__pendingRow",userList:"OrgReplPermissionsV2-module__uejJjG__userList"})},647906,664239,e=>{"use strict";var r=e.i(276385),i=e.i(389959),t=e.i(84466),l=e.i(908796),n=e.i(99357),a=e.i(183035),s=e.i(167392),o=e.i(334028),u=e.i(22827),d=e.i(480028),p=e.i(406664),c=e.i(919073),m=e.i(643484),g=e.i(201894),x=e.i(108431),h=e.i(8047),y=e.i(244945),f=e.i(566866);let j=({customer:e,isAdmin:i})=>{let t=(0,p.useCreateInteractive)({variant:"filledAndOutlined"}),l=e?.subscriptionSummary?(0,u.getPlanType)(e.subscriptionSummary):void 0,{openUpgradeModal:n,hasUpgradeAction:a}=(0,u.useCollaboratorUpgradeAction)({isAdmin:i,planType:l}),s=e?.seats.__typename==="CustomerSeats"?e.seats:null,o=s?.counts??null,m=s?.caps??null;if(!o||!m)return null;let x=o.admin+o.member+o.guest,j=m.members-x;if(j>2)return null;let _=j>0?"warning":"error",v=(0,u.getTooltipContent)({isAdmin:i,plan:l,seatsRemaining:j});return(0,r.jsx)(y.Tooltip,{tooltip:v,children:(0,r.jsxs)(c.ShadesSurface,{align:"center",clsx:a?t.clsx:f.default.nonInteractive,style:a?t.style:void 0,onClick:a?n:void 0,row:!0,gap:6,px:8,py:1,br:4,colorShade:_,background:!0,border:"subtle",children:[(0,r.jsx)(h.Text,{variant:"small",multiline:!1,children:`${x} / ${m.members}`}),(0,r.jsx)(g.MeasureBar,{clsx:f.default.measureBar,total:m.members,current:x,backgroundColor:"warning"===_?d.tokens.yellowStrongest:d.tokens.accentNegativeStrongest,color:"warning"===_?d.tokens.yellowDefault:d.tokens.accentNegativeStronger,tooltipHidden:!0})]})})},_=({customer:e,isAdmin:i,errorMessage:t})=>{let l=e?.subscriptionSummary?(0,u.getPlanType)(e.subscriptionSummary):void 0,{openUpgradeModal:n,hasUpgradeAction:a}=(0,u.useCollaboratorUpgradeAction)({isAdmin:i,planType:l}),s=(0,u.isInsufficientQuotaError)(t),o=e?.seats.__typename==="CustomerSeats"?e.seats:null,d=o?o.counts.admin+o.counts.member+o.counts.guest:0,p=o?o.caps.members-d:0,c=s?(0,u.getTooltipContent)({isAdmin:i,plan:l,seatsRemaining:p}):t;return(0,r.jsx)(x.StatusBanner,{colorway:"negative",text:c,action:s&&a?(0,r.jsx)(m.Button,{text:"Upgrade",size:"small",onClick:n}):void 0})};e.s(["CollaboratorCountV2",0,j,"InviteErrorBanner",0,_],664239);var v=e.i(570438),w=e.i(562782),b=e.i(777198),M=e.i(94961),S=e.i(959787),I=e.i(921451),C=e.i(825419),R=e.i(295231),k=e.i(61732),T=e.i(210266);let V=({count:e,isMember:i})=>(0,r.jsxs)(h.Text,{variant:"small",color:"dimmest",children:[e," ",i?"other ":"",(0,w.default)("admin",e)," in your workspace"," ",1===e?"has":"have"," owner access."]}),U=({user:e,currentUserId:i,repl:t,group:l,options:n,onScopeChange:a})=>{let s=i===e.id;return(0,r.jsxs)(k.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,r.jsxs)(k.View,{row:!0,gap:8,align:"center",shrink:!0,children:[(0,r.jsx)(C.Avatar,{src:e.image,username:e.username,fullName:e.displayName,size:28}),(0,r.jsxs)(h.Text,{height:"singleLine",translate:"no",children:[e.fullName||e.displayName,s?(0,r.jsxs)(r.Fragment,{children:[" ",(0,r.jsx)(h.Text,{variant:"small",color:"dimmest",children:"(You)"})]}):null]})]}),(0,r.jsx)(I.default,{repl:t,group:l,options:n,onScopeChange:a,buttonVariant:"nofill",iconSize:16})]})},O=({email:e})=>(0,r.jsx)(k.View,{row:!0,gap:8,align:"center",justify:"space-between",clsx:T.default.pendingRow,children:(0,r.jsxs)(k.View,{row:!0,gap:8,align:"center",shrink:!0,children:[(0,r.jsx)(c.ShadesSurface,{elevate:"2x",background:!0,align:"center",justify:"center",br:"full",border:"subtle",clsx:T.default.pendingAvatar,children:(0,r.jsx)(o.default,{size:16})}),(0,r.jsxs)(h.Text,{height:"singleLine",children:[e," ",(0,r.jsx)(h.Text,{variant:"small",color:"dimmest",children:"(Invited)"})]})]})}),L=({repl:e,group:i,options:t,onScopeChange:l,orgName:n})=>(0,r.jsxs)(k.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,r.jsxs)(k.View,{row:!0,gap:8,align:"center",shrink:!0,children:[(0,r.jsx)(M.default,{group:i,variant:"compact"}),(0,r.jsxs)(k.View,{row:!0,gap:2,align:"center",shrink:!0,children:[(0,r.jsx)(h.Text,{height:"singleLine",multiline:!1,children:A(i,n)}),null!=i.memberCount?(0,r.jsxs)(h.Text,{variant:"small",color:"dimmest",children:[" ","(",i.memberCount," ",1===i.memberCount?"person":"people",")"]}):null]})]}),(0,r.jsx)(I.default,{repl:e,group:i,options:t,onScopeChange:l,buttonVariant:"nofill",iconSize:16})]}),P=[l.OrgGroupReplScopeRole.Owner,l.OrgGroupReplScopeRole.Deployer,l.OrgGroupReplScopeRole.Editor,l.OrgGroupReplScopeRole.Viewer].map(e=>({id:e,...(0,I.getOptionDisplay)(e)})),A=(e,r)=>{switch(e.type){case l.OrgGroupType.SystemAdmins:return`Admins in ${r??e.name}`;case l.OrgGroupType.SystemMembers:return`Members in ${r??e.name}`;case l.OrgGroupType.SystemViewers:return`Viewers in ${r??e.name}`;case l.OrgGroupType.SystemGuests:return`Guests in ${r??e.name}`;case l.OrgGroupType.Custom:return`Everyone in ${e.name}`;default:return e.name}},E=({orgId:e,selectedGroups:o,repl:u,onScopeChange:p,customer:c,isAdmin:g})=>{let h=`group-search-${(0,i.useId)()}`,y=`role-select-${(0,i.useId)()}`,[f,j]=(0,i.useState)(),[v,w]=(0,i.useState)(""),[M,I]=(0,i.useState)(l.OrgGroupReplScopeRole.Editor),[C,V]=(0,i.useState)(!1),[U,O]=(0,i.useState)(null),L=(0,b.useMemoedDismissibleElement)("repl-invite-guests-use-credits-banner"),A=!!f||(0,t.default)(v.trim()),E=()=>{O(null)},G=async()=>{await p(),w(""),j(void 0),E(),V(!0),setTimeout(()=>V(!1),2e3)},[B,{loading:$}]=(0,n.useUpdateOrgGroupScopesV2Mutation)({onCompleted:e=>{"OrgGroup"===e.updateOrgGroupScopes.__typename?G():O(e.updateOrgGroupScopes.message)},onError:e=>{O(e.message)}}),[z,{loading:D}]=(0,n.useGrantReplAccessByEmailMutation)({onCompleted:e=>{let r=e.grantReplAccessByEmail;"Repl"===r.__typename?G():O(r.message)},onError:e=>{O(e.message)}}),N=$||D,q=null;return C&&(q=(0,r.jsx)(a.default,{size:20,color:d.tokens.accentPositiveDefault})),(0,r.jsxs)(k.View,{gap:12,children:[(0,r.jsxs)(k.View,{row:!0,gap:8,align:"center",children:[(0,r.jsxs)(k.View,{clsx:T.default.inviteSearchRow,row:!0,grow:!0,shrink:!0,align:"center",children:[(0,r.jsx)(k.View,{grow:!0,shrink:!0,clsx:T.default.inviteInputWrapper,children:(0,r.jsx)(S.default,{inputId:h,orgId:e,types:[l.OrgGroupType.Custom,l.OrgGroupType.SystemIndividual],selectedGroups:o,value:v,setValue:e=>{w(e),f&&j(void 0)},onSelect:e=>{j(e),w(e.name)},onClear:()=>{j(void 0)},hideSearchIcon:!0,hideEmptyResults:!0,placeholder:"Add emails, names, or groups"})}),(0,r.jsx)(R.PopupMenu,{id:y,trigger:(0,r.jsx)(m.Button,{size:"small",variant:"nofill",text:P.find(e=>e.id===M)?.label??M,iconRight:(0,r.jsx)(s.default,{})}),"aria-label":"Select invite role",onAction:e=>{I(e)},items:P,children:e=>(0,r.jsx)(R.MenuItem,{id:e.id,label:e.label,description:e.description,icon:e.icon},e.id)})]}),(0,r.jsx)(m.Button,{text:"Invite",colorway:"primary",size:"small",disabled:!A||N,loading:N,onClick:()=>{if(E(),f)return void B({variables:{input:{orgGroupId:f.id,orgScopes:[],groupScopes:[],replScopes:[{resourceId:u.id,role:M}],removeScopes:[]}}});let e=v.trim();(0,t.default)(e)?z({variables:{input:{replId:u.id,email:e,role:M}}}):O("Invalid email address")}}),q]}),L.isLoading||L.isDone?null:(0,r.jsx)(x.StatusBanner,{colorway:"primary",text:"Invited guests will use credits from your subscription.",closable:!0,closeAction:L.setAsDone}),U?(0,r.jsx)(_,{customer:c,isAdmin:g,errorMessage:U}):null]})};e.s(["OrgReplPermissionsV2",0,({queryResult:e})=>{let i=(0,v.useCurrentUserId)(),{data:t,error:l,refetch:n}=e,a=t?.getRepl?.__typename==="Repl"?t.getRepl:void 0,s=(a?.multiplayerStatus?.groups??[]).filter(e=>"custom"!==e.group.type),o=(a?.multiplayerStatus?.groups??[]).filter(e=>"custom"===e.group.type),u=a?.multiplayerStatus?.individuals??[],d=a?.multiplayerStatus?.pendingInvites??[],p=s.map(e=>e.group).concat(o.map(e=>e.group)).concat(u.map(e=>e.group)),c=a?.org?.adminGroup?.__typename==="OrgGroupConnection"?a.org.adminGroup.items[0]:null,m=c?.memberCount!=null?c.memberCount-!!c.isMember:null,g=async()=>{await n()};if(l?.message)return(0,r.jsx)(k.View,{gap:12,children:(0,r.jsx)(x.StatusBanner,{colorway:"negative",text:l.message})});if(!a)return null;let y=a.org?.name;return(0,r.jsxs)(k.View,{gap:12,children:[(0,r.jsxs)(k.View,{px:12,row:!0,justify:"space-between",align:"center",children:[(0,r.jsx)(h.Text,{variant:"subheadDefault",multiline:!1,children:"Invite"}),(0,r.jsx)(j,{customer:a.org?.customer?.__typename==="Customer"?a.org.customer:void 0,isAdmin:a.org?.authorizations.editSubscription.isAuthorized??!1})]}),a.org?.id&&a.authorizations.editPermissions.isAuthorized?(0,r.jsx)(k.View,{px:12,children:(0,r.jsx)(E,{orgId:a.org.id,selectedGroups:p,repl:a,onScopeChange:g,customer:a.org?.customer?.__typename==="Customer"?a.org.customer:void 0,isAdmin:a.org?.authorizations.editSubscription.isAuthorized??!1})}):null,(0,r.jsxs)(k.View,{gap:12,px:12,children:[(0,r.jsx)(h.Text,{variant:"small",multiline:!1,clsx:T.default.accessLabel,children:"Access"}),(0,r.jsxs)(k.View,{gap:8,clsx:T.default.userList,children:[s.map(({group:e,options:i})=>(0,r.jsx)(L,{repl:a,group:e,options:i,onScopeChange:g,orgName:y},e.id)),o.map(({group:e,options:i})=>(0,r.jsx)(L,{repl:a,group:e,options:i,onScopeChange:g,orgName:y},e.id)),u.map(({group:e,user:t,options:l})=>(0,r.jsx)(U,{currentUserId:i,repl:a,group:e,user:t,options:l,onScopeChange:g},t.id)),d.map(({email:e})=>(0,r.jsx)(O,{email:e},e))]}),null!=m&&m>0?(0,r.jsx)(V,{count:m,isMember:c?.isMember??!1}):null]})]})}],647906)},528311,e=>{e.v({fontWeightMedium:"OrgReplPermissions-module__Uac-wq__fontWeightMedium",sectionWithBorders:"OrgReplPermissions-module__Uac-wq__sectionWithBorders",visibilitySelector:"OrgReplPermissions-module__Uac-wq__visibilitySelector"})},19882,5160,e=>{"use strict";var r=e.i(276385),i=e.i(389959),t=e.i(908796),l=e.i(973245),n=e.i(444008),a=e.i(130902),s=e.i(304277);e.i(566901);var o=e.i(951262);let u={},d=l.gql`
+    fragment ReplMultiplayerOrg on Org {
+  ...OrgMetadata
+  membersCount
+}
+    ${n.OrgMetadataFragmentDoc}`,p=l.gql`
+    fragment ReplMultiplayerOrgGroup on OrgGroup {
+  ...OrgGroupsOrgGroup
+}
+    ${a.OrgGroupsOrgGroupFragmentDoc}`,c=l.gql`
+    fragment ReplMultiplayerGroup on ReplMultiplayerGroupScope {
+  group {
+    __typename
+    ...ReplMultiplayerOrgGroup
+  }
+  options {
+    __typename
+    role
+    status
+  }
+}
+    ${p}`,m=l.gql`
+    fragment ReplMultiplayerIndividual on ReplMultiplayerIndividualScope {
+  group {
+    __typename
+    ...ReplMultiplayerOrgGroup
+  }
+  user {
+    __typename
+    id
+    displayName
+    fullName
+    image
+    username
+  }
+  options {
+    __typename
+    role
+    status
+  }
+}
+    ${p}`,g=l.gql`
+    fragment ReplMultiplayerStatus on Repl {
+  id
+  title
+  isPrivate
+  url
+  org {
+    ...ReplMultiplayerOrg
+  }
+  multiplayerStatus {
+    __typename
+    groups {
+      __typename
+      ...ReplMultiplayerGroup
+    }
+    individuals {
+      __typename
+      ...ReplMultiplayerIndividual
+    }
+  }
+  authorizations {
+    editPermissions {
+      isAuthorized
+      message
+    }
+    editVisibility {
+      isAuthorized
+      message
+    }
+    removeSelf {
+      isAuthorized
+      message
+    }
+    viewPermissions {
+      isAuthorized
+      message
+    }
+  }
+}
+    ${d}
+${c}
+${m}`,x=l.gql`
+    query ReplMultiplayerStatus($replId: String!) {
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      __typename
+      ...ReplMultiplayerStatus
+    }
+  }
+}
+    ${g}`;function h(e){let r={...u,...e};return s.useQuery(x,r)}let y=l.gql`
+    mutation UpdateOrgReplVisibility($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      ...ReplMultiplayerStatus
+    }
+  }
+}
+    ${g}`;function f(e){let r={...u,...e};return o.useMutation(y,r)}e.s(["ReplMultiplayerStatusDocument",0,x,"useReplMultiplayerStatusQuery",0,h,"useUpdateOrgReplVisibilityMutation",0,f],5160);var j=e.i(667746),_=e.i(183035),v=e.i(167392),w=e.i(252204),b=e.i(399245),M=e.i(953436),S=e.i(269848),I=e.i(416298),C=e.i(632350),R=e.i(570438),k=e.i(562782),T=e.i(94961),V=e.i(959787),U=e.i(921451),O=e.i(480028),L=e.i(825419),P=e.i(643484),A=e.i(419635),E=e.i(295231),G=e.i(108431),B=e.i(8047),$=e.i(244945),z=e.i(61732),D=e.i(921125),N=e.i(528311);let q=({user:e,currentUserId:i,repl:t,group:l,options:n,onScopeChange:a})=>{let s=i===e.id;return(0,r.jsxs)(z.View,{row:!0,gap:16,align:"center",justify:"space-between",children:[(0,r.jsxs)(z.View,{row:!0,gap:8,children:[(0,r.jsx)(L.Avatar,{src:e.image,username:e.username,fullName:e.displayName,size:32}),(0,r.jsx)(z.View,{gap:6,justify:"center",children:(0,r.jsxs)(z.View,{row:!0,gap:8,children:[(0,r.jsx)(B.Text,{height:"singleLine",translate:"no",children:e.fullName||e.displayName}),s?(0,r.jsx)(B.Text,{height:"singleLine",color:"dimmest",children:"(You)"}):null]})})]}),(0,r.jsx)(z.View,{children:(0,r.jsx)(U.default,{repl:t,group:l,options:n,onScopeChange:a})})]})},W=({repl:e,group:i,options:t,onScopeChange:l})=>(0,r.jsxs)(z.View,{row:!0,gap:16,align:"center",justify:"space-between",children:[(0,r.jsxs)(z.View,{row:!0,gap:8,children:[(0,r.jsx)(T.default,{group:i}),(0,r.jsxs)(z.View,{gap:6,justify:"center",children:[(0,r.jsx)(B.Text,{height:"singleLine",children:i.name}),(0,r.jsxs)(z.View,{row:!0,gap:8,children:[i.isMember?(0,r.jsx)(B.Text,{variant:"small",color:"dimmest",height:"singleLine",children:"(you)"}):null,null!=i.memberCount?(0,r.jsx)(B.Text,{variant:"small",color:"dimmest",height:"singleLine",children:(0,k.default)("member",i.memberCount,!0)}):null]})]})]}),(0,r.jsx)(z.View,{children:(0,r.jsx)(U.default,{repl:e,group:i,options:t,onScopeChange:l})})]}),J=({orgId:e,selectedGroups:l,repl:n,onScopeChange:a})=>{let s=`group-search-${(0,i.useId)()}`,[o,u]=(0,i.useState)(),[d,p]=(0,i.useState)(""),[c,{data:m,error:g,loading:x}]=(0,j.useOrgGroupReplScopeOptionsLazyQuery)(),h=m&&m.currentUser?.org?.__typename==="Org"&&"OrgGroup"===m.currentUser.org.group.__typename&&m.currentUser.org.group.replScopeOptions?.__typename==="OrgGroupReplScopeOptions"?m.currentUser.org.group.replScopeOptions.items[0].options:void 0,y=m?.currentUser&&"Org"!==m.currentUser.org.__typename?m.currentUser.org.message:void 0,f=m?.currentUser&&"Org"===m.currentUser.org.__typename&&"OrgGroup"!==m.currentUser.org.group.__typename?m.currentUser.org.group.message:void 0,_=m?.currentUser&&"Org"===m.currentUser.org.__typename&&"OrgGroup"===m.currentUser.org.group.__typename&&m.currentUser.org.group.replScopeOptions?.__typename!=="OrgGroupReplScopeOptions"?m.currentUser.org.group.replScopeOptions?.message:void 0,v=y??f??_??g?.message,w=async()=>{await a(),p(""),u(void 0)};return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(z.View,{row:!0,gap:8,children:[(0,r.jsx)(z.View,{grow:!0,shrink:!0,children:(0,r.jsx)(V.default,{inputId:s,orgId:e,types:[t.OrgGroupType.Custom,t.OrgGroupType.SystemIndividual],selectedGroups:l,value:d,setValue:p,onSelect:r=>{u(r),p(r.name),c({variables:{orgId:e,groupId:r.id,input:{replIds:[n.id]}}})},onClear:()=>u(void 0),placeholder:"Share with groups or other members"})}),o&&h||x?(0,r.jsxs)(z.View,{pl:24,row:!0,align:"center",children:[o&&h&&!x?(0,r.jsx)(U.default,{group:o,repl:n,options:h,onScopeChange:w}):null,x?(0,r.jsx)(S.default,{size:24}):null]}):null]}),v?(0,r.jsx)(G.StatusBanner,{colorway:"negative",text:v}):null]})},Y=({repl:e,org:t})=>{let l,[n,a]=(0,i.useState)(),[s,o]=(0,i.useState)(),[u,{loading:d}]=f({variables:{input:{id:e.id}},onError:e=>{o(e.message)}}),p=`repl-visibility-${(0,i.useId)()}`,c=e.authorizations.editVisibility.isAuthorized,m=e.authorizations.editVisibility.message,g=[{id:"private",icon:(0,r.jsx)(M.default,{}),name:`Internal to ${t.name}`,selected:e.isPrivate,description:"Only selected workspace members can view or edit."},{id:"public",icon:(0,r.jsx)(b.default,{}),name:"Public on Replit",selected:!e.isPrivate,description:"Anyone on Replit can see or fork. You choose who can edit."}],x=g.find(e=>e.selected),h=x?(0,r.jsxs)(z.View,{row:!0,gap:8,align:"center",children:[x.icon," ",x.name]}):void 0;return l=s?(0,r.jsx)($.Tooltip,{tooltip:s,children:(0,r.jsx)(I.default,{size:24,color:O.tokens.accentNegativeDefault})}):d?(0,r.jsx)(S.default,{size:24}):n?(0,r.jsx)(_.default,{size:24,color:O.tokens.accentPositiveDefault}):null,(0,r.jsxs)(z.View,{clsx:N.default.visibilitySelector,grow:!0,shrink:!0,row:!0,gap:4,children:[(0,r.jsx)($.Tooltip,{tooltip:m,isDisabled:c,children:(0,r.jsx)(E.PopupMenu,{id:p,trigger:(0,r.jsx)(P.Button,{iconRight:(0,r.jsx)(v.default,{}),text:h??"Control Repl visibility",disabled:!c}),"aria-label":`Control ${e.title} visibility`,onAction:r=>{let i="private"===r;i!==e.isPrivate&&(o(void 0),u({variables:{input:{id:e.id,isPrivate:i}},optimisticResponse:{__typename:"RootMutationType",updateRepl:{__typename:"UpdateReplPayload",repl:{...e,isPrivate:i}}},onCompleted:e=>{"UpdateReplPayload"===e.updateRepl.__typename&&(a(!0),setTimeout(()=>a(!1),2e3))}}))},items:g,disallowEmptySelection:!0,isDisabled:!c,children:e=>(0,r.jsx)(E.MenuItem,{id:e.id,label:e.name,description:e.description,icon:e.icon},e.id)})}),l?(0,r.jsx)(z.View,{children:l}):null]})};e.s(["OrgReplPermissions",0,({replId:e})=>{let i=(0,R.useCurrentUserId)(),t=(0,C.default)(),{data:l,loading:n,error:a,refetch:s}=h({variables:{replId:e}}),o=l?.getRepl?.__typename==="Repl"?l.getRepl:void 0,u=(o?.multiplayerStatus?.groups??[]).filter(e=>"custom"!==e.group.type),d=(o?.multiplayerStatus?.groups??[]).filter(e=>"custom"===e.group.type),p=o?.multiplayerStatus?.individuals??[],c=u.map(e=>e.group).concat(d.map(e=>e.group)).concat(p.map(e=>e.group)),m=async()=>{await s()};return a?.message?(0,r.jsx)(z.View,{gap:12,children:(0,r.jsx)(G.StatusBanner,{colorway:"negative",text:a.message})}):n||!o?(0,r.jsx)(z.View,{px:12,align:"center",justify:"center",children:(0,r.jsx)(S.default,{})}):(0,r.jsxs)(z.View,{gap:12,children:[(0,r.jsxs)(z.View,{tag:"header",px:12,gap:2,children:[(0,r.jsx)(B.Text,{variant:"subheadDefault",children:"Share App"}),(0,r.jsxs)(z.View,{clsx:N.default.fontWeightMedium,row:!0,gap:4,children:[o.org?(0,r.jsxs)(B.Text,{variant:"small",color:"dimmer",children:[o.org.name," /"]}):null,(0,r.jsx)(B.Text,{variant:"small",children:o.title})]})]}),o.org?.id&&o.authorizations.editPermissions.isAuthorized?(0,r.jsx)(z.View,{clsx:N.default.sectionWithBorders,children:(0,r.jsx)(J,{orgId:o.org.id,selectedGroups:c,repl:o,onScopeChange:m})}):null,(0,r.jsxs)(z.View,{gap:12,px:12,children:[(0,r.jsx)(B.Text,{variant:"small",clsx:N.default.fontWeightMedium,children:"Roles with access"}),(0,r.jsx)(z.View,{gap:12,children:u.map(({group:e,options:i})=>(0,r.jsx)(W,{repl:o,group:e,options:i,onScopeChange:m},e.id))}),d.length>0?(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(B.Text,{variant:"small",clsx:N.default.fontWeightMedium,children:"Groups with access"}),(0,r.jsx)(z.View,{gap:12,children:d.map(({group:e,options:i})=>(0,r.jsx)(W,{repl:o,group:e,options:i,onScopeChange:m},e.id))})]}):null]}),p.length>0?(0,r.jsxs)(z.View,{gap:12,px:12,children:[(0,r.jsx)(B.Text,{variant:"small",clsx:N.default.fontWeightMedium,children:"People with access"}),p.map(({group:e,user:t,options:l})=>(0,r.jsx)(q,{currentUserId:i,repl:o,group:e,user:t,options:l,onScopeChange:m},t.id))]}):null,o.org?.id?(0,r.jsx)(z.View,{clsx:N.default.sectionWithBorders,children:(0,r.jsxs)(z.View,{row:!0,justify:"space-between",children:[(0,r.jsx)(Y,{repl:o,org:o.org}),t?null:(0,r.jsx)(A.ButtonLink,{prefetch:!1,...(0,D.replViewLinkProps)(o),iconRight:(0,r.jsx)(w.default,{}),variant:"outlined",text:"Cover page",target:"_blank",style:{pointerEvents:"auto"}})]})}):null]})}],19882)},835307,e=>{e.v({control:"StatusBannerButton-module__Lb30Hq__control",root:"StatusBannerButton-module__Lb30Hq__root",text:"StatusBannerButton-module__Lb30Hq__text"})},145315,e=>{"use strict";var r=e.i(276385),i=e.i(413974),t=e.i(389959),l=e.i(602686),n=e.i(983420),a=e.i(379778),s=e.i(480028),o=e.i(919073),u=e.i(488299),d=e.i(8047),p=e.i(61732),c=e.i(835307);let m=(0,s.cvarsFrom)("StatusBannerButton.module.css",["--bg","--bg-active","--color","--color-disabled","--border","--border-hover","--border-active"]),g=p.SpecializedView.button,x=(0,t.forwardRef)((e,t)=>{let{className:x,colorway:h,closable:y,iconLeft:f,iconRight:j,text:_,closeAction:v}=e,w=(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n.IconProvider,{size:16,children:f}),(0,r.jsx)(p.View,{grow:!0,shrink:!0,children:(0,r.jsx)(d.Text,{clsx:c.default.text,variant:"small",children:_})}),(0,r.jsx)(n.IconProvider,{size:16,children:j})]}),b=(0,a.useView)({pl:8,pr:8*!y,py:4,clsx:c.default.control,className:x}),M=h?s.colormap[h]:null,S=M?{[m.bg]:M.dimmest,[m.bgActive]:M.dimmer,[m.color]:M.strongest,[m.colorDisabled]:M.default,[m.border]:M.dimmer,[m.borderHover]:M.strongest,[m.borderActive]:M.default}:{};return(0,r.jsxs)(p.View,{row:!0,gap:4,align:"center",clsx:c.default.root,style:S,children:["href"in e?(0,r.jsx)(i.default,{as:e.as,href:e.href,prefetch:e.prefetch,replace:e.replace,scroll:e.scroll,shallow:e.shallow,ref:t,rel:e.rel,role:"link",target:e.target,...b,children:w}):(0,r.jsx)(g,{ref:t,onClick:e.onClick,type:e.type,...b,children:w}),y?(0,r.jsx)(o.ShadesSurface,{pr:4,style:{backgroundColor:"transparent"},children:(0,r.jsx)(u.IconButton,{alt:"Close",tooltipBehavior:"hidden",colorway:h,onClick:v,children:(0,r.jsx)(l.default,{})})}):null]})});x.displayName="StatusBannerButton",e.s(["StatusBannerButton",0,x])},784763,724549,e=>{"use strict";var r=e.i(973245),i=e.i(304277);e.i(566901);let t={},l=r.gql`
+    query PersonalCollaboratorGate {
+  currentUser {
+    id
+    isSubscribed
+    username
+    shouldEnforceMultiplayerLimit: gate(feature: "flag-empty-hangar")
+    personalCollaborators {
+      ... on PersonalCollaboratorsInfo {
+        count
+        limit
+        collaborators {
+          repl {
+            id
+            slug
+            url
+            title
+            nextPagePathname
+            iconUrl
+          }
+          user {
+            id
+            username
+          }
+        }
+      }
+    }
+  }
+}
+    `;function n(e){let r={...t,...e};return i.useQuery(l,r)}e.s(["PersonalCollaboratorGateDocument",0,l,"usePersonalCollaboratorGateQuery",0,n],724549),e.s(["useCollaboratorLimit",0,()=>{let{data:e,loading:r,refetch:i}=n({ssr:!1,fetchPolicy:"network-only"});if(r)return{type:"loading"};if(e&&e?.currentUser?.personalCollaborators.__typename==="PersonalCollaboratorsInfo"){let{personalCollaborators:{count:r,limit:t,collaborators:l},isSubscribed:n,shouldEnforceMultiplayerLimit:a,username:s}=e.currentUser;return{type:"data",refetch:i,collaboratorCount:r,collaboratorLimit:t,collaboratorsByRepl:l.reduce((e,{repl:r,user:i})=>{let t=e.get(r.id)??{id:r.id,slug:r.slug,url:r.url,title:r.title,nextPagePathname:r.nextPagePathname,iconUrl:r.iconUrl,__typename:r.__typename,users:[]};return e.set(r.id,{...t,users:[...t.users,{id:i.id,username:i.username}]}),e},new Map),isStarterUser:!n,username:s,shouldEnforceMultiplayerLimit:a}}return{type:"error"}}],784763)},921451,e=>{"use strict";var r=e.i(276385),i=e.i(389959),t=e.i(908796),l=e.i(667746),n=e.i(183035),a=e.i(167392),s=e.i(602686),o=e.i(534141),u=e.i(712771),d=e.i(269848),p=e.i(140154),c=e.i(612343),m=e.i(416298),g=e.i(480028),x=e.i(462229),h=e.i(691636),y=e.i(643484),f=e.i(295231),j=e.i(244945),_=e.i(61732);let v=(0,x.cssRecord)({scopeSelector:[h.rcss.position.relative],selectOption:[{"&:hover":{cursor:"auto"}}],icon:[h.rcss.position.absolute,h.rcss.top("50%"),h.rcss.left(-4),{transform:"translate(-100%, -50%)"}]}),w=e=>{switch(e){case t.OrgGroupReplScopeRoleOption.Owner:return{icon:(0,r.jsx)(c.default,{}),label:"Owner",description:"Full permissions including deleting app"};case t.OrgGroupReplScopeRoleOption.Deployer:return{icon:(0,r.jsx)(p.default,{}),label:"Publisher",description:"Can edit and publish this app"};case t.OrgGroupReplScopeRoleOption.Editor:return{icon:(0,r.jsx)(o.default,{}),label:"Editor",description:"Can edit this app"};case t.OrgGroupReplScopeRoleOption.Viewer:return{icon:(0,r.jsx)(u.default,{}),label:"Read-only",description:"Can view the published app"};case t.OrgGroupReplScopeRoleOption.None:return{icon:(0,r.jsx)(s.default,{}),label:"None",description:"No permissions"}}};e.s(["default",0,({group:e,repl:s,options:o,onScopeChange:u,iconSize:p=24,buttonVariant:c})=>{let x,[h,b]=(0,i.useState)(!1),[M,S]=(0,i.useState)(o.find(e=>e.status===t.ScopeStatus.Current)),I=`${s.id}-role-${(0,i.useId)()}`,C=M?w(M.role).label:void 0,R=s.authorizations.editPermissions.isAuthorized,[k,{data:T,loading:V,error:U}]=(0,l.useUpdateOrgGroupScopesMutation)({onCompleted:e=>{"OrgGroup"===e.updateOrgGroupScopes.__typename&&(u(),b(!0),setTimeout(()=>b(!1),2e3))}}),O=T?.updateOrgGroupScopes&&"OrgGroup"!==T.updateOrgGroupScopes.__typename?T.updateOrgGroupScopes.message:U?.message;return x=O?(0,r.jsx)(j.Tooltip,{tooltip:O,children:(0,r.jsx)(m.default,{size:p,color:g.tokens.accentNegativeDefault})}):V?(0,r.jsx)(d.default,{size:p}):h?(0,r.jsx)(n.default,{size:p,color:g.tokens.accentPositiveDefault}):null,(0,r.jsxs)(_.View,{css:v.scopeSelector,row:!0,gap:8,justify:"end",children:[x?(0,r.jsx)(_.View,{css:v.icon,children:x}):null,(0,r.jsx)(j.Tooltip,{tooltip:"You cannot edit this group's permissions.",isDisabled:R,children:(0,r.jsx)(f.PopupMenu,{id:I,...c?{trigger:(0,r.jsx)(y.Button,{variant:c,text:C??"Select a role...",iconRight:(0,r.jsx)(a.default,{}),disabled:!R})}:{label:C??"Select a role..."},"aria-label":`${e.name}'s access to ${s.title}`,onAction:r=>{let i=o.find(({role:e})=>e===r);if(!i||i.role===M?.role)return;S(i);let l=i.role===t.OrgGroupReplScopeRoleOption.None?[]:[{resourceId:s.id,role:(e=>{switch(e){case t.OrgGroupReplScopeRoleOption.Owner:return t.OrgGroupReplScopeRole.Owner;case t.OrgGroupReplScopeRoleOption.Deployer:return t.OrgGroupReplScopeRole.Deployer;case t.OrgGroupReplScopeRoleOption.Editor:return t.OrgGroupReplScopeRole.Editor;case t.OrgGroupReplScopeRoleOption.Viewer:return t.OrgGroupReplScopeRole.Viewer}})(i.role)}],n=i.role===t.OrgGroupReplScopeRoleOption.None?[{resourceType:t.OrgGroupRemoveResourceType.Repl,resourceId:s.id}]:[];k({variables:{input:{orgGroupId:e.id,orgScopes:[],groupScopes:[],replScopes:l,removeScopes:n}}})},items:o,disallowEmptySelection:!0,isDisabled:!R,children:i=>{let l=w(i.role),n=i.status===t.ScopeStatus.Unavailable;return(0,r.jsx)(f.MenuItem,{id:i.role,label:l.label,description:n?`${e.name} cannot have ${i.role} access`:l.description,css:v.selectOption,icon:l.icon,isDisabled:n},i.role)}})})]})},"getOptionDisplay",0,w])},810394,e=>{"use strict";e.s(["CORE_MULTIPLAYER_LIMIT",0,5,"LEGACY_STARTER_MULTIPLAYER_LIMIT",0,100,"USER_LOOKUP_LIMIT",0,250])},22827,368258,e=>{"use strict";var r=e.i(389959),i=e.i(596139),t=e.i(810394),l=e.i(242917);function n({onPurchaseComplete:e}={}){let{show:r}=(0,l.useGlobalModal)();return{showUpgradeModal:async()=>{await r("MembershipPurchaseModal",{headingText:"Upgrade for more collaborators",subHeadingText:`Share your Projects with up to ${t.CORE_MULTIPLAYER_LIMIT} collaborators with Replit ${i.corePlanName}`,onPurchaseComplete:e,analyticsContext:{upgrade:{context:"workspace_multiplayer_header"}}})}}}e.s(["useCoreUpgradeModal",0,n],368258),e.i(450717);let a={[i.freePlanPrefix]:`To add new seats, upgrade to ${i.corePlanName}.`,[i.corePlanPrefix]:`To add new seats, upgrade to ${i.proPlanName}.`,[i.proPlanPrefix]:`To add new seats, upgrade to ${i.enterprisePlanName}.`};e.s(["getPlanType",0,function(e){switch(e.__typename){case"CustomerSubscriptionSummaryFreeTier":return i.freePlanPrefix;case"CustomerSubscriptionSummarySelfServe":{let{planPrefix:r}=e.plan;if(r===i.corePlanPrefix)return i.corePlanPrefix;if(r===i.proPlanPrefix)return i.proPlanPrefix;return}default:return}},"getTooltipContent",0,function({isAdmin:e,plan:r,seatsRemaining:i}){let t=i>0?"You’re nearing the collaborator limit for your plan.":"You’ve reached the maximum number of collaborators for your plan.";if(!e)return`${t} To add new seats, contact your admin.`;let l=r?a[r]:null;return l?`${t} ${l}`:t},"isInsufficientQuotaError",0,function(e){return e.includes("reached the limit")||e.includes("insufficient_quota")||e.includes("insufficient seats")},"useCollaboratorUpgradeAction",0,function({isAdmin:e,planType:t}){let{show:a}=(0,l.useGlobalModal)(),{showUpgradeModal:s}=n(),o=e&&null!=t;return{openUpgradeModal:(0,r.useCallback)(async()=>{if(e)switch(t){case i.freePlanPrefix:await s();break;case i.corePlanPrefix:await a("MembershipPurchaseModal",{analyticsContext:{upgrade:{context:"workspace_multiplayer_header"}}});break;case i.proPlanPrefix:window.open("https://replit.com/enterprise","_blank")}},[e,t,s,a]),hasUpgradeAction:o}}],22827)},94961,e=>{"use strict";var r=e.i(276385),i=e.i(422266),t=e.i(612343),l=e.i(569910),n=e.i(480028),a=e.i(919073);let s={red:n.tokens.redDimmest,orange:n.tokens.orangeDimmest,yellow:n.tokens.yellowDimmest,lime:n.tokens.limeDimmest,blue:n.tokens.blueDimmest,purple:n.tokens.purpleDimmest,pink:n.tokens.pinkDimmest};e.s(["default",0,({group:e,variant:n="normal"})=>{let o,u;switch(n){case"normal":case"compact":o=28,u=16;break;default:(0,l.default)(n)}let d=s[e.color],p={width:o,height:o,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,...d?{backgroundColor:d}:{}},c=e.type.startsWith("system_")?i.default:t.default;return(0,r.jsx)(a.ShadesSurface,{elevate:"2x",background:!0,border:"subtle",style:p,children:(0,r.jsx)(c,{size:u})})}])},182697,e=>{"use strict";var r=e.i(973245),i=e.i(304277);e.i(566901);var t=e.i(951262);let l={},n=r.gql`
+    query MultiplayerInviteUrl($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      inviteUrl
+      owner {
+        ... on User {
+          id
+        }
+        ... on Team {
+          id
+          capabilities {
+            isBusinessPlan
+            hasValidSubscription
+          }
+        }
+      }
+    }
+  }
+}
+    `,a=r.gql`
+    mutation MultiplayerRefreshInviteUrl($replId: String!) {
+  refreshMultiplayerInviteLink(replId: $replId) {
+    id
+    ... on Repl {
+      id
+      inviteUrl
+    }
+  }
+}
+    `,s=r.gql`
+    mutation DeleteMultiplayerInviteUrl($replId: String!) {
+  deleteMultiplayerInviteLink(replId: $replId) {
+    ... on Repl {
+      id
+      inviteUrl
+    }
+    ... on UserError {
+      message
+    }
+  }
+}
+    `;e.s(["MultiplayerInviteUrlDocument",0,n,"useDeleteMultiplayerInviteUrlMutation",0,function(e){let r={...l,...e};return t.useMutation(s,r)},"useMultiplayerInviteUrlQuery",0,function(e){let r={...l,...e};return i.useQuery(n,r)},"useMultiplayerRefreshInviteUrlMutation",0,function(e){let r={...l,...e};return t.useMutation(a,r)}])},879513,e=>{e.v({copyToClipboard:"JoinLinkV2-module__Bungra__copyToClipboard",input:"JoinLinkV2-module__Bungra__input",inviteUrlContainer:"JoinLinkV2-module__Bungra__inviteUrlContainer",linkIconContainer:"JoinLinkV2-module__Bungra__linkIconContainer",textAlignLeft:"JoinLinkV2-module__Bungra__textAlignLeft",title:"JoinLinkV2-module__Bungra__title"})},206406,e=>{"use strict";var r=e.i(276385),i=e.i(389959),t=e.i(182697),l=e.i(882848),n=e.i(269848),a=e.i(820228),s=e.i(416298),o=e.i(320216),u=e.i(20639),d=e.i(415541),p=e.i(709485),c=e.i(480028),m=e.i(919073),g=e.i(643484),x=e.i(580519),h=e.i(488299),y=e.i(528710),f=e.i(528326),j=e.i(145315),_=e.i(327391),v=e.i(8047),w=e.i(61732),b=e.i(879513);let M=()=>(0,r.jsxs)(w.View,{row:!0,gap:8,align:"start",grow:!0,shrink:!0,children:[(0,r.jsx)(m.ShadesSurface,{elevate:"2x",align:"center",justify:"center",background:!0,clsx:b.default.linkIconContainer,children:(0,r.jsx)(l.default,{size:16})}),(0,r.jsxs)(w.View,{gap:4,grow:!0,shrink:!0,children:[(0,r.jsx)(v.Text,{clsx:b.default.title,id:"link-switch-label",multiline:!1,children:"Private join link"}),(0,r.jsx)(v.Text,{variant:"small",color:"dimmest",multiline:!1,children:"Anyone with a link will have edit access"})]})]});function S({isOpen:e,onClose:i,onConfirm:t,isLoading:l}){return(0,r.jsx)(f.Modal,{isOpen:e,onRequestClose:i,hideCloseButton:!0,centered:!0,maxWidth:424,children:(0,r.jsxs)(w.View,{gap:8,p:4,children:[(0,r.jsx)(v.Text,{variant:"subheadDefault",multiline:!1,children:"Regenerate join link"}),(0,r.jsx)(v.Text,{color:"dimmest",children:"The previous join link will no longer be accessible to anyone attempting to join."}),(0,r.jsxs)(w.View,{row:!0,gap:8,justify:"end",pt:8,children:[(0,r.jsx)(w.View,{grow:!0,justify:"end",row:!0,children:(0,r.jsx)(g.Button,{text:"Cancel",onClick:i,size:"small"})}),(0,r.jsx)(g.Button,{colorway:"primary",text:"Confirm",onClick:t,disabled:l,size:"small"})]})]})})}e.s(["default",0,function({replId:e}){let{showConfirm:g,showError:f}=(0,o.default)(),[I,C]=(0,i.useState)(!1),{data:R,loading:k,error:T,refetch:V}=(0,t.useMultiplayerInviteUrlQuery)({variables:{replId:e}}),[U,O]=(0,t.useMultiplayerRefreshInviteUrlMutation)({variables:{replId:e},onError:e=>f(e.message),onCompleted:()=>{g("Join link created"),C(!1)}}),[L,P]=(0,t.useDeleteMultiplayerInviteUrlMutation)({variables:{replId:e},onError:e=>f(e.message),onCompleted:e=>{"UserError"===e.deleteMultiplayerInviteLink.__typename?f(e.deleteMultiplayerInviteLink.message):"Repl"===e.deleteMultiplayerInviteLink.__typename&&g("Join link deleted")}}),A=R?.getRepl?.__typename==="Repl"?R.getRepl:null,E=O.loading||P.loading,G=R?.getRepl?.__typename==="Repl"&&A?.owner?.__typename==="Team",B=R?.getRepl?.__typename==="Repl"&&A?.owner?.__typename==="Team"&&A?.owner.capabilities?.isBusinessPlan&&A?.owner.capabilities?.hasValidSubscription,$=R?.getRepl?.__typename==="Repl"&&A?.inviteUrl&&1?window.location.origin+A?.inviteUrl:null;return k||G&&!B?null:T?(0,r.jsxs)(w.View,{gap:12,px:12,children:[(0,r.jsxs)(w.View,{row:!0,justify:"space-between",children:[(0,r.jsx)(M,{}),(0,r.jsx)(_.Switch,{isSelected:!1,isDisabled:!0,"aria-labelledby":"link-switch-label"})]}),(0,r.jsx)(j.StatusBannerButton,{clsx:b.default.textAlignLeft,iconLeft:(0,r.jsx)(s.default,{color:c.tokens.accentNegativeStrongest}),colorway:"negative",text:"Error loading join link. Click here to try again, or contact support.",onClick:()=>V({replId:e})})]}):(0,r.jsxs)(w.View,{gap:12,px:12,children:[(0,r.jsxs)(w.View,{row:!0,justify:"space-between",align:"center",children:[(0,r.jsx)(M,{}),(0,r.jsxs)(w.View,{row:!0,gap:8,align:"center",shrink:!1,children:[$?(0,r.jsx)(h.IconButton,{alt:"Regenerate join link",onClick:()=>C(!0),disabled:E,size:24,children:(0,r.jsx)(a.default,{size:16})}):null,k?(0,r.jsxs)(w.View,{row:!0,gap:4,align:"center",children:[(0,r.jsx)(n.default,{color:c.tokens.foregroundDimmer}),(0,r.jsx)(v.Text,{color:"dimmer",multiline:!1,children:"Loading..."})]}):(0,r.jsx)(_.Switch,{isSelected:!!$,isDisabled:E,onChange:e=>{E||(e?U():L())},"aria-labelledby":"link-switch-label"})]})]}),!k&&$?(0,r.jsxs)(m.ShadesSurface,{clsx:b.default.inviteUrlContainer,elevate:!1,children:[(0,r.jsx)(y.Input,{type:"url",readOnly:!0,disabled:!0,value:E?"Loading...":$,clsx:b.default.input}),(0,r.jsx)(x.CopyButton,{textToCopy:$,onClick:()=>{$?((0,u.default)($),(0,d.track)(p.events.JOIN_LINK_COPIED,{replId:A?.id,isTeamRepl:G,source:"replEnvironment"}),g("Link copied")):f("Could not copy link")},tooltipSuccessText:"Copied to clipboard",text:"Copy link",iconLeft:(0,r.jsx)(l.default,{}),clsx:b.default.copyToClipboard,colorway:"primary",disabled:E})]}):null,(0,r.jsx)(S,{isOpen:I,onClose:()=>C(!1),onConfirm:()=>U(),isLoading:E})]})}])},768124,e=>{"use strict";var r=e.i(973245),i=e.i(951262);let t={},l=r.gql`
+    fragment MultiplayerUser on User {
+  id
+  image
+  username
+  fullName
+  url
+}
+    `,n=r.gql`
+    fragment MultiplayerRepl on Repl {
+  id
+  collaborators {
+    user {
+      ...MultiplayerUser
+    }
+  }
+  multiplayerInvites {
+    email
+    type
+  }
+}
+    ${l}`,a=r.gql`
+    fragment MultiplayerReplInvite on MultiplayerInvite {
+  email
+  repl {
+    ...MultiplayerRepl
+  }
+  invitePermissionType: type
+}
+    ${n}`,s=r.gql`
+    mutation AddOrInviteReplMultiplayer($input: AddOrInviteReplMultiplayerInput!) {
+  addOrInviteReplMultiplayer(input: $input) {
+    __typename
+    ... on AddOrInviteReplMultiplayerOuput {
+      result {
+        ... on MultiplayerInvite {
+          ...MultiplayerReplInvite
+        }
+        ... on ReplPermission {
+          id
+          repl {
+            ...MultiplayerRepl
+          }
+          user {
+            ...MultiplayerUser
+          }
+          replPermissionType: type
+        }
+      }
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+    ... on UserError {
+      message
+    }
+  }
+}
+    ${a}
+${n}
+${l}`;e.s(["MultiplayerUserFragmentDoc",0,l,"useAddOrInviteReplMultiplayerMutation",0,function(e){let r={...t,...e};return i.useMutation(s,r)}])},54731,e=>{"use strict";var r=e.i(973245),i=e.i(768124),t=e.i(820669),l=e.i(304277);e.i(566901);let n={},a=r.gql`
+    query MultiplayerManager($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      isOwner
+      collaborators {
+        user {
+          ...MultiplayerUser
+        }
+      }
+      authorizations {
+        editPermissions {
+          isAuthorized
+        }
+      }
+      multiplayerInvites {
+        email
+        type
+      }
+    }
+  }
+  currentUser {
+    id
+    username
+    fullName
+    image
+    url
+    isSubscribed
+    customer {
+      ...CollaboratorCountV2Customer
+    }
+  }
+}
+    ${i.MultiplayerUserFragmentDoc}
+${t.CollaboratorCountV2CustomerFragmentDoc}`;e.s(["MultiplayerManagerDocument",0,a,"useMultiplayerManagerQuery",0,function(e){let r={...n,...e};return l.useQuery(a,r)}])},363,e=>{e.v({avatarLink:"MultiplayerManagerListItemV2-module__lOYcnG__avatarLink",pendingAvatar:"MultiplayerManagerListItemV2-module__lOYcnG__pendingAvatar",root:"MultiplayerManagerListItemV2-module__lOYcnG__root",user:"MultiplayerManagerListItemV2-module__lOYcnG__user",userLink:"MultiplayerManagerListItemV2-module__lOYcnG__userLink"})},186327,e=>{e.v({dropdownMenu:"UsernameSearch-module__wBrchW__dropdownMenu",emptyText:"UsernameSearch-module__wBrchW__emptyText",form:"UsernameSearch-module__wBrchW__form",result:"UsernameSearch-module__wBrchW__result",resultActive:"UsernameSearch-module__wBrchW__resultActive",searchContainer:"UsernameSearch-module__wBrchW__searchContainer"})},982312,e=>{e.v({accessLabel:"MultiplayerManagerV2-module__UkbNfq__accessLabel",emptyContainer:"MultiplayerManagerV2-module__UkbNfq__emptyContainer",headerMobile:"MultiplayerManagerV2-module__UkbNfq__headerMobile",measureBar:"MultiplayerManagerV2-module__UkbNfq__measureBar",root:"MultiplayerManagerV2-module__UkbNfq__root",searchContainer:"MultiplayerManagerV2-module__UkbNfq__searchContainer",userGroupTitle:"MultiplayerManagerV2-module__UkbNfq__userGroupTitle",userList:"MultiplayerManagerV2-module__UkbNfq__userList"})},29685,926663,566938,54145,32260,e=>{"use strict";var r=e.i(276385),i=e.i(488081),t=e.i(84466),l=e.i(908796),n=e.i(54731);e.i(486898),e.i(416746);var a=e.i(269848),s=e.i(810394),o=e.i(3466),u=e.i(664239),d=e.i(784763),p=e.i(389959),c=e.i(830675),m=e.i(768124),g=e.i(709485),x=e.i(320216),h=e.i(415541);let y=({isMobileApp:e,isTeam:r,handleUpgradeTriggered:i,replId:t,showErrorToast:n=!0})=>{let{showError:a,showConfirm:s}=(0,x.default)(),o=(0,d.useCollaboratorLimit)(),[u,y]=(0,p.useState)(null),f=(0,p.useCallback)(()=>{y(null)},[]);(0,p.useEffect)(()=>{u&&n&&a(u)},[u,n,a]);let[j,{loading:_}]=(0,m.useAddOrInviteReplMultiplayerMutation)({onError:e=>{c.addBreadcrumb({message:"useAddOrInviteReplMultiplayerMutation"}),c.captureException(Error(e.message)),y("Something unexpected happened, please try again.")},onCompleted:n=>{let a,u,d=n.addOrInviteReplMultiplayer;switch(d.__typename){case"NotFoundError":case"UnauthorizedError":y(d.message);return;case"UserError":y(d.message),d.message.includes("reached the limit")&&(e&&!r?y("You have reached the invite limit for a free account. Please upgrade to add more collaborators."):!e&&i&&i(!0));return;case"AddOrInviteReplMultiplayerOuput":"MultiplayerInvite"===d.result.__typename?(a=l.MultiplayerInviteMethod.Email,u=d.result.email):(a=l.MultiplayerInviteMethod.Username,u=d.result.user?.username?`@${d.result.user.username}`:"user")}y(null),"data"===o.type&&o.refetch(),(0,h.track)(g.events.MULTIPLAYER_INVITED,{replId:t,inviteMethod:a}),s(`Added ${u}`)}});return{addOrInviteReplMultiplayer:j,loadingAddMutation:_,inviteError:u,clearInviteError:f}};e.s(["default",0,y],926663);var f=e.i(955410),j=e.i(753451),_=e.i(413974),v=e.i(602686),w=e.i(334028),b=e.i(973245),M=e.i(951262);let S={},I=b.gql`
+    mutation RemoveMultiplayerUser($replId: String!, $username: String!) {
+  removeMultiplayerUser(replId: $replId, username: $username) {
+    id
+    user {
+      id
+      ...MultiplayerUser
+    }
+    repl {
+      id
+      collaborators {
+        user {
+          ...MultiplayerUser
+        }
+      }
+    }
+  }
+}
+    ${m.MultiplayerUserFragmentDoc}`,C=b.gql`
+    mutation DeleteMultiplayerInvite($replId: String!, $email: String!) {
+  deleteMultiplayerInvite(replId: $replId, email: $email) {
+    ... on MultiplayerInvite {
+      email
+      type
+      repl {
+        id
+        collaborators {
+          user {
+            ...MultiplayerUser
+          }
+        }
+        multiplayerInvites {
+          email
+          type
+        }
+      }
+    }
+    ... on UserError {
+      message
+    }
+  }
+}
+    ${m.MultiplayerUserFragmentDoc}`,R=()=>{var e,r;let i,t,{showConfirm:l,showError:n}=(0,x.default)(),a=(0,d.useCollaboratorLimit)(),s=(e,r)=>{c.addBreadcrumb({message:r}),c.captureException(Error(e.message)),n("Something unexpected happened, please try again.")},[o,{loading:u}]=(e={onError:e=>s(e,"useRemoveMultiplayerUser"),onCompleted:e=>{let r=e.removeMultiplayerUser.user?.username;r?l(`@${r} removed`):l("User removed"),"data"===a.type&&a.refetch()}},i={...S,...e},M.useMutation(I,i)),[p,{loading:m}]=(r={onError:e=>s(e,"useDeleteMultiplayerInviteMutation"),onCompleted:e=>{if("UserError"===e.deleteMultiplayerInvite.__typename)return void n(e.deleteMultiplayerInvite.message);if("MultiplayerInvite"===e.deleteMultiplayerInvite.__typename){let{email:r}=e.deleteMultiplayerInvite;l(`Invite canceled for ${r}`)}}},t={...S,...r},M.useMutation(C,t));return{removeMultiplayerUser:o,loadingRemoveUser:u,deleteMultiplayerInvite:p,loadingDeleteInvite:m}};e.s(["default",0,R],566938);var k=e.i(480028),T=e.i(825419),V=e.i(488299),U=e.i(8047),O=e.i(61732),L=e.i(363);let P=e=>{let{isPendingInvitation:i,canEditMultiplayers:t,replId:l,isCurrentUser:n,isOwner:a}=e,{removeMultiplayerUser:s,loadingRemoveUser:o,deleteMultiplayerInvite:u,loadingDeleteInvite:d}=R(),p=!i;return(0,r.jsxs)(O.View,{clsx:L.default.root,row:!0,gap:12,align:"center",justify:"space-between",children:[(0,r.jsxs)(O.View,{row:!0,gap:12,align:"center",grow:!0,shrink:!0,clsx:L.default.user,children:[p?(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(_.default,{href:`/@${e.user.username}`,clsx:L.default.avatarLink,children:(0,r.jsx)(T.Avatar,{username:e.user.username,src:e.user.image??null,fullName:e.user.fullName,size:32,layout:"intrinsic"})}),(0,r.jsx)(_.default,{href:`/@${e.user.username}`,clsx:L.default.userLink,children:(0,r.jsx)(U.Text,{multiline:!1,translate:"no",children:e.user.fullName||e.user.username})})]}):(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)("div",{clsx:L.default.pendingAvatar,children:(0,r.jsx)(w.default,{color:k.tokens.foregroundDimmer,size:16})}),(0,r.jsx)(U.Text,{color:"dimmest",multiline:!1,children:e.email})]}),n?(0,r.jsx)(U.Text,{color:"dimmest",variant:"small",multiline:!1,children:"(You)"}):null]}),(0,r.jsxs)(O.View,{row:!0,gap:8,align:"center",children:[(0,r.jsx)(U.Text,{color:"dimmest",variant:"small",multiline:!1,children:a?"Owner":i?"Invited":"Editor"}),!t||n||a?null:(0,r.jsx)(V.IconButton,{alt:p?"Remove member":"Cancel invitation",onClick:()=>{!t||o||d||(p?s({variables:{replId:l,username:e.user.username}}):u({variables:{replId:l,email:e.email}}))},children:(0,r.jsx)(v.default,{size:12})})]})]})};var A=e.i(162372),E=e.i(304277);e.i(566901);let G={},B=b.gql`
+    fragment MultiplayerUsernameSearchUser on User {
+  id
+  firstName
+  lastName
+  fullName
+  username
+  image
+}
+    `,$=b.gql`
+    query MultiplayerUsernameSearch($query: String!, $limit: Int) {
+  usernameSearch(query: $query, limit: $limit) {
+    id
+    ...MultiplayerUsernameSearchUser
+  }
+}
+    ${B}`;var z=e.i(183035),D=e.i(619158),N=e.i(919073),q=e.i(766299),W=e.i(643484),J=e.i(528710);let Y=e=>{let i=(e=>{switch(e){case"xxs":case"xs":return 12;case"s":return 16;case"m":return 24;case"l":return 64;case"xl":return 128;default:return}})(e.size),t={...e.style};return i||(t.width="100%",t.height="100%"),(0,r.jsx)(T.Avatar,{style:t,size:i,src:e.url??null,username:e.username,fullName:null===e.fullName?void 0:e.fullName})};Y.defaultProps={size:"m"},e.s(["default",0,Y],54145);var F=e.i(186327);function H({onSubmit:e,existingUsernames:i,isDisabled:l,onChange:n,placeholder:s}){var o;let u,[d,c]=(0,p.useState)(""),m=(0,q.useIdSeed)()("invitee-search"),g=(0,D.default)(d.trim().replace(/^@/,""),250),{data:h,loading:y,error:f}=(o={skip:!g||(0,t.default)(d),variables:{query:g,limit:6}},u={...G,...o},E.useQuery($,u)),{showError:j}=(0,x.default)();(0,p.useEffect)(()=>{f&&j(f.message)},[f,j]);let _=h?.usernameSearch,v=e=>{c(e.currentTarget.value),n?.(e.currentTarget.value)},w=r=>{"Enter"===r.key&&d.match(/.+@.+/)&&(e(d),c(""),r.currentTarget.blur())};return(0,r.jsxs)("form",{onSubmit:r=>{r.preventDefault(),e(d),c("")},clsx:F.default.form,children:[(0,r.jsx)(A.default,{onChange:e=>{e&&c(e.username)},itemToString:e=>e?.username||"",initialHighlightedIndex:0,defaultHighlightedIndex:0,children:({getInputProps:e,getItemProps:t,getMenuProps:l,isOpen:n,highlightedIndex:o,getRootProps:u})=>(0,r.jsxs)(O.View,{clsx:F.default.searchContainer,...u({refKey:"innerRef"}),children:[(0,r.jsx)(J.Input,{id:m,...e({ref:null,name:m,value:d,onChange:v,placeholder:s??"Enter username or email",autoComplete:"off","data-1p-ignore":!0,"data-lpignore":"true","data-protonpass-ignore":"true",onKeyDown:w})}),n?(0,r.jsxs)(O.View,{children:[_&&_.length?(0,r.jsx)(N.ShadesSurface,{clsx:F.default.dropdownMenu,tag:"ul",...l({refKey:"innerRef"}),children:_.map((e,l)=>(0,r.jsxs)(O.View,{tag:"li",...t({item:e,index:l}),p:8,row:!0,gap:8,justify:"space-between",align:"center",clsx:[F.default.result,{[F.default.resultActive]:l===o}],children:[(0,r.jsxs)(O.View,{row:!0,gap:8,align:"center",children:[(0,r.jsx)(Y,{size:"m",url:e.image,username:e.username,fullName:e.fullName}),(0,r.jsx)(U.Text,{multiline:!1,translate:"no",children:e.fullName||e.username})]}),i.includes(e.username)?(0,r.jsx)(O.View,{children:(0,r.jsx)(z.default,{color:k.tokens.accentPositiveStronger})}):null]},l))}):null,y?(0,r.jsx)(N.ShadesSurface,{clsx:F.default.dropdownMenu,children:(0,r.jsxs)(O.View,{p:8,row:!0,gap:8,align:"center",children:[(0,r.jsx)(a.default,{}),(0,r.jsx)(U.Text,{color:"dimmer",multiline:!1,children:"Loading…"})]})}):null,_&&0===_.length?(0,r.jsx)(N.ShadesSurface,{clsx:F.default.dropdownMenu,children:(0,r.jsxs)(U.Text,{clsx:F.default.emptyText,color:"dimmer",multiline:!1,children:['No results found for "',d,'"']})}):null]}):null]})}),(0,r.jsx)(O.View,{children:(0,r.jsx)(W.Button,{colorway:d?"primary":void 0,type:"submit",disabled:l||!d,text:"Invite"})})]})}e.s(["default",0,H],32260);var Q=e.i(201894);e.i(244945);var K=e.i(982312);e.s(["MultiplayerManagerV2",0,({replId:e,handleUpgradeTriggered:p})=>{let c=(0,i.useRouter)(),m=(0,j.isInBonsaiWebview)(c),g=(0,d.useCollaboratorLimit)(),{addOrInviteReplMultiplayer:x,loadingAddMutation:h,inviteError:_,clearInviteError:v}=y({isMobileApp:m,isTeam:!1,handleUpgradeTriggered:p,replId:e,showErrorToast:!1}),{trackClick:w}=(0,f.useTrackClick)(),{data:b,loading:M}=(0,n.useMultiplayerManagerQuery)({variables:{replId:e},pollInterval:8e3}),S=b?.getRepl.__typename==="Repl"?b.getRepl:null,I=b?.currentUser,C=(S?.collaborators??[]).reduce((e,{user:r})=>[...e,r.username],[]),R=S?.authorizations.editPermissions.isAuthorized||!1,T=!!(S&&!C.length&&!S.multiplayerInvites.length&&!(S.isOwner&&I?.username)),V=S?.collaborators.map(({user:e})=>e)??[],L=V.find(e=>e.id===I?.id),A=V.filter(e=>e.id!==I?.id),E=A.length,G=(0,r.jsxs)(r.Fragment,{children:[null===E||I?.isSubscribed?null:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(U.Text,{variant:"small",color:"dimmest","aria-hidden":!0,multiline:!1,children:[E," / ",s.LEGACY_STARTER_MULTIPLAYER_LIMIT]}),(0,r.jsx)(Q.MeasureBar,{clsx:K.default.measureBar,total:s.LEGACY_STARTER_MULTIPLAYER_LIMIT,current:E,tooltip:`${s.LEGACY_STARTER_MULTIPLAYER_LIMIT-E} free editors remaining`})]}),M||I?.isSubscribed||m?null:(0,r.jsx)(o.default,{size:"small",context:"workspace_multiplayer_header",onClickCallback:()=>{p&&p(!0)},onCancel:()=>{p&&p(!1)}})]});return(0,r.jsx)(N.ShadesSurface,{clsx:K.default.root,elevate:!1,gap:12,align:"stretch",grow:!0,shrink:!0,px:12,children:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(O.View,{row:!0,justify:"space-between",align:"center",clsx:{[K.default.headerMobile]:m},children:[(0,r.jsx)(U.Text,{variant:"subheadDefault",multiline:!1,children:"Invite"}),(0,r.jsxs)(O.View,{row:!0,gap:8,align:"center",children:[M?(0,r.jsxs)(O.View,{row:!0,gap:4,align:"center",grow:!0,justify:"center",children:[(0,r.jsx)(a.default,{color:k.tokens.foregroundDimmer}),(0,r.jsx)(U.Text,{color:"dimmer",multiline:!1,children:"Loading..."})]}):null,"data"!==g.type||g.shouldEnforceMultiplayerLimit?(0,r.jsx)(u.CollaboratorCountV2,{customer:I?.customer,isAdmin:S?.isOwner??!1}):G]})]}),(0,r.jsxs)(O.View,{gap:12,children:[R&&C&&S?(0,r.jsx)(O.View,{clsx:K.default.searchContainer,children:(0,r.jsx)(H,{existingUsernames:C,onSubmit:r=>{v(),M&&!I?.isSubscribed||h||(w({productArea:"multiplayer",target:"invite_modal_invite_button",properties:{invitee:r,inviteMethod:(0,t.default)(r)?"email":"username"}}),x({variables:{input:{replId:e,target:{method:(0,t.default)(r)?l.MultiplayerInviteMethod.Email:l.MultiplayerInviteMethod.Username,value:r},level:l.ReplPermissionLevel.Rw}}}))},onChange:e=>{e||v()}})}):null,_?(0,r.jsx)(u.InviteErrorBanner,{customer:I?.customer,isAdmin:S?.isOwner??!1,errorMessage:_}):null]}),T?(0,r.jsx)(O.View,{clsx:K.default.emptyContainer,gap:16,py:16,justify:"start",children:(0,r.jsx)(U.Text,{color:"dimmest",multiline:!1,children:"No one else is here"})}):(0,r.jsxs)(O.View,{gap:12,children:[(0,r.jsx)(U.Text,{variant:"small",multiline:!1,clsx:K.default.accessLabel,children:"Access"}),(0,r.jsxs)(O.View,{gap:8,clsx:K.default.userList,children:[S?.isOwner&&!L&&I?.username?(0,r.jsx)(P,{isPendingInvitation:!1,replId:e,canEditMultiplayers:R,user:{id:I.id,username:I.username,fullName:I.fullName,image:I.image,url:I.url},isCurrentUser:!0,isOwner:!0}):null,L?(0,r.jsx)(P,{isPendingInvitation:!1,replId:e,canEditMultiplayers:R,user:L,isCurrentUser:!0,isOwner:S?.isOwner||!1},L.id):null,A.map(i=>i?(0,r.jsx)(P,{isPendingInvitation:!1,replId:e,canEditMultiplayers:R,user:i},i.id):null),S?.multiplayerInvites.map(i=>(0,r.jsx)(P,{canEditMultiplayers:R,replId:e,isPendingInvitation:!0,email:i.email},i.email))]})]})]})})}],29685)},195445,e=>{"use strict";var r=e.i(973245),i=e.i(768124),t=e.i(304277);e.i(566901);let l={},n=r.gql`
+    query TeamMultiplayerManagerMultiplayers($replId: String!) {
+  currentUser {
+    id
+  }
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      isOwner
+      collaborators {
+        type
+        permission
+        user {
+          ...MultiplayerUser
+        }
+      }
+      authorizations {
+        editPermissions {
+          isAuthorized
+        }
+        inviteGuests {
+          isAuthorized
+        }
+      }
+      multiplayerInvites {
+        email
+        type
+      }
+      owner {
+        ... on User {
+          id
+        }
+        ... on Team {
+          id
+          username
+          displayName
+          capabilities {
+            isBusinessPlan
+            hasValidSubscription
+            availableSeats
+          }
+          members {
+            id
+            permissions
+            user {
+              id
+              ...MultiplayerUser
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    ${i.MultiplayerUserFragmentDoc}`;e.s(["TeamMultiplayerManagerMultiplayersDocument",0,n,"useTeamMultiplayerManagerMultiplayersQuery",0,function(e){let r={...l,...e};return t.useQuery(n,r)}])},872217,e=>{e.v({controls:"AddGuestWarning-module__W9lS1G__controls",root:"AddGuestWarning-module__W9lS1G__root",textContainer:"AddGuestWarning-module__W9lS1G__textContainer"})},619028,e=>{e.v({limitsContainer:"CollaboratorCount-module__AJ4Xza__limitsContainer",measureBar:"CollaboratorCount-module__AJ4Xza__measureBar",measureBarWrapper:"CollaboratorCount-module__AJ4Xza__measureBarWrapper",pill:"CollaboratorCount-module__AJ4Xza__pill"})},108832,e=>{e.v({root:"MultiplayerManagerListItem-module__AJfZhq__root",userContainer:"MultiplayerManagerListItem-module__AJfZhq__userContainer",userContainerPending:"MultiplayerManagerListItem-module__AJfZhq__userContainerPending"})},238550,e=>{e.v({emptyContainer:"MultiplayerManager-module__z8jLqa__emptyContainer",headerMobile:"MultiplayerManager-module__z8jLqa__headerMobile",measureBar:"MultiplayerManager-module__z8jLqa__measureBar",root:"MultiplayerManager-module__z8jLqa__root",searchContainer:"MultiplayerManager-module__z8jLqa__searchContainer",userGroupTitle:"MultiplayerManager-module__z8jLqa__userGroupTitle",userList:"MultiplayerManager-module__z8jLqa__userList"})},475157,e=>{e.v({self:"InviteDialogV2-module__ZpKR4a__self"})},295132,e=>{e.v({copyToClipboard:"JoinLink-module__Aod6wq__copyToClipboard",globeIconContainer:"JoinLink-module__Aod6wq__globeIconContainer",input:"JoinLink-module__Aod6wq__input",inviteUrlContainer:"JoinLink-module__Aod6wq__inviteUrlContainer",link:"JoinLink-module__Aod6wq__link",textAlignLeft:"JoinLink-module__Aod6wq__textAlignLeft",title:"JoinLink-module__Aod6wq__title"})},147500,e=>{e.v({self:"InviteDialog-module__-OK-RW__self"})},495662,e=>{"use strict";var r=e.i(276385),i=e.i(269848),t=e.i(206406),l=e.i(29685),n=e.i(647906),a=e.i(488081),s=e.i(389959),o=e.i(84466),u=e.i(908796),d=e.i(195445),p=e.i(612343),c=e.i(926663),m=e.i(753451),g=e.i(643484),x=e.i(8047),h=e.i(61732),y=e.i(872217);function f({email:e,onInvite:i,onCancel:t}){return(0,r.jsxs)(h.View,{clsx:y.default.root,p:24,children:[(0,r.jsx)(x.Header,{level:3,textAlign:"center",variant:"subheadBig",children:"Are you sure?"}),(0,r.jsx)(h.View,{clsx:y.default.textContainer,children:(0,r.jsxs)(x.Text,{variant:"text",children:[(0,r.jsx)(h.View,{tag:"p",pb:16,children:"Adding an external user as a guest to this App will give the user read and write access. Please confirm the below email address before inviting the user as a guest."}),(0,r.jsx)("p",{children:e})]})}),(0,r.jsxs)(h.View,{clsx:y.default.controls,children:[(0,r.jsx)(g.Button,{onClick:t,text:"Cancel"}),(0,r.jsx)(g.Button,{colorway:"primary",onClick:i,text:"Invite"})]})]})}var j=e.i(54731),_=e.i(486898),v=e.i(416746),w=e.i(810394),b=e.i(3466),M=e.i(368258),S=e.i(784763);e.i(450717);var I=e.i(242917),C=e.i(480028),R=e.i(201894),k=e.i(744006),T=e.i(244945),V=e.i(619028);let U=({modalState:e})=>{let t=(0,S.useCollaboratorLimit)(),{show:l}=(0,I.useGlobalModal)(),n=(0,s.useCallback)(()=>{"data"===t.type&&t.refetch(),"open"===e.type&&e.onUpgradeSuccess()},[t,e]),{showUpgradeModal:a}=(0,M.useCoreUpgradeModal)({onPurchaseComplete:n}),o=(0,s.useCallback)(async()=>{if("data"!==t.type)return;let{isStarterUser:e}=t;e?await a():await l("MembershipPurchaseModal",{analyticsContext:{upgrade:{context:"workspace_multiplayer_header"}},onPurchaseComplete:n})},[t,a,l,n]);if((0,s.useEffect)(()=>{e?.type==="open"&&"data"===t.type&&o()},[e?.type,t.type,o]),"loading"===t.type)return(0,r.jsxs)(h.View,{grow:!0,justify:"center",row:!0,gap:4,align:"center",children:[(0,r.jsx)(i.default,{color:C.tokens.foregroundDimmer}),(0,r.jsx)(x.Text,{color:"dimmer",multiline:!1,children:"Loading..."})]});if("data"!==t.type)return null;let{collaboratorCount:u,collaboratorLimit:d}=t,p=Math.max(0,d-u);return(0,r.jsx)(h.View,{row:!0,gap:8,children:(0,r.jsxs)(h.View,{clsx:V.default.limitsContainer,align:"center",row:!0,gap:8,pr:8,children:[(0,r.jsx)(T.Tooltip,{tooltip:`Your account is limited to ${d} collaborators. Manage your collaborators on the Usage page.`,children:(0,r.jsx)(k.Pill,{colorway:"yellow",clsx:V.default.pill,text:`${u} / ${d}`,onClick:o})}),(0,r.jsx)(h.View,{clsx:V.default.measureBarWrapper,onClick:o,children:(0,r.jsx)(R.MeasureBar,{clsx:V.default.measureBar,total:d,current:u,tooltip:`${p} account collaborators remaining`,backgroundColor:C.tokens.yellowDimmer,color:C.tokens.yellowDefault})})]})})};var O=e.i(955410),L=e.i(413974),P=e.i(806685),A=e.i(602686),E=e.i(566938),G=e.i(488299),B=e.i(54145),$=e.i(108832);let z=e=>{let{isPendingInvitation:i,canEditMultiplayers:t,replId:l}=e,{removeMultiplayerUser:n,loadingRemoveUser:a,deleteMultiplayerInvite:s,loadingDeleteInvite:o}=(0,E.default)(),u=!i;return(0,r.jsxs)(h.View,{clsx:$.default.root,px:16,py:4,row:!0,gap:8,align:"center",justify:"space-between",children:[u?(0,r.jsx)(L.default,{href:`/@${e.user.username}`,clsx:$.default.userContainer,children:(0,r.jsxs)(h.View,{row:!0,gap:8,align:"center",children:[(0,r.jsx)(B.default,{size:"m",url:e.user.image,username:e.user.username,fullName:e.user.fullName}),(0,r.jsx)(x.Text,{height:"singleLine",translate:"no",children:e.user.fullName||e.user.username})]})}):(0,r.jsxs)(h.View,{clsx:$.default.userContainerPending,row:!0,grow:!0,gap:8,align:"center",children:[(0,r.jsx)(P.default,{color:C.tokens.outlineDefault,size:32}),(0,r.jsx)(x.Text,{color:"dimmest",multiline:!1,children:e.email})]}),(0,r.jsxs)(h.View,{row:!0,gap:8,align:"center",children:[(0,r.jsx)(x.Text,{color:"dimmest",variant:"small",multiline:!1,children:e.isPendingInvitation?"Invited":"Can edit"}),t?(0,r.jsx)(G.IconButton,{alt:u?"Remove member":"Cancel invitation",onClick:()=>{!t||a||o||(u?n({variables:{replId:l,username:e.user.username}}):s({variables:{replId:l,email:e.email}}))},children:(0,r.jsx)(A.default,{size:12})}):null]})]})},D=e=>(0,r.jsx)(z,{...e});var N=e.i(32260);e.i(281823);var q=e.i(321409),W=e.i(919073),J=e.i(238550);function Y(e,r){return r.some(r=>r.id===e)}let F=({title:e,count:i,color:t,tooltip:l})=>(0,r.jsxs)(h.View,{row:!0,gap:4,align:"center",children:[(0,r.jsx)(_.default,{color:t,size:6}),(0,r.jsx)(x.Text,{variant:"small",clsx:J.default.userGroupTitle,multiline:!1,children:e}),(0,r.jsx)(x.Text,{multiline:!1,variant:"small",color:"dimmest",clsx:J.default.userGroupTitle,children:i}),l?(0,r.jsx)(T.Tooltip,{tooltip:l,children:(0,r.jsx)(v.default,{})}):null]}),H=({replId:e,handleUpgradeTriggered:t})=>{let l=(0,a.useRouter)(),n=(0,m.isInBonsaiWebview)(l),d=(0,S.useCollaboratorLimit)(),{addOrInviteReplMultiplayer:p,loadingAddMutation:g}=(0,c.default)({isMobileApp:n,isTeam:!1,handleUpgradeTriggered:t,replId:e}),{trackClick:y}=(0,O.useTrackClick)(),f=(0,q.useActiveUsers)(),[_,v]=(0,s.useState)({type:"closed"}),{data:M,loading:I}=(0,j.useMultiplayerManagerQuery)({variables:{replId:e},pollInterval:8e3}),k=M?.getRepl.__typename==="Repl"?M.getRepl:null,T=M?.currentUser,V=(k?.collaborators??[]).reduce((e,{user:r})=>[...e,r.username],[]),L=k?.authorizations.editPermissions.isAuthorized||!1,P=!!(k&&!V.length&&!k.multiplayerInvites.length),A=k?.collaborators.map(({user:e})=>e).filter(e=>e.id!==T?.id),E=A?.filter(e=>e&&Y(e.id,f)),G=A?.filter(e=>e&&!Y(e.id,f)),B=A?A.length:null,$=(0,r.jsxs)(r.Fragment,{children:[null===B||T?.isSubscribed?null:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(x.Text,{variant:"small",color:"dimmest","aria-hidden":!0,multiline:!1,children:[B," / ",w.LEGACY_STARTER_MULTIPLAYER_LIMIT]}),(0,r.jsx)(R.MeasureBar,{clsx:J.default.measureBar,total:w.LEGACY_STARTER_MULTIPLAYER_LIMIT,current:B,tooltip:`${w.LEGACY_STARTER_MULTIPLAYER_LIMIT-B} free editors remaining`})]}),I||T?.isSubscribed||n?null:(0,r.jsx)(b.default,{size:"small",context:"workspace_multiplayer_header",onClickCallback:()=>{t&&t(!0)},onCancel:()=>{t&&t(!1)}})]});return(0,r.jsx)(W.ShadesSurface,{clsx:J.default.root,elevate:!1,gap:12,align:"stretch",grow:!0,shrink:!0,px:12,children:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(h.View,{row:!0,justify:"space-between",align:"center",clsx:{[J.default.headerMobile]:n},children:[(0,r.jsx)(h.View,{row:!0,gap:4,align:"center",children:(0,r.jsx)(x.Text,{variant:"subheadDefault",multiline:!1,children:"Multiplayers"})}),(0,r.jsxs)(h.View,{row:!0,gap:8,align:"center",children:[I?(0,r.jsxs)(h.View,{row:!0,gap:4,align:"center",grow:!0,justify:"center",children:[(0,r.jsx)(i.default,{color:C.tokens.foregroundDimmer}),(0,r.jsx)(x.Text,{color:"dimmer",multiline:!1,children:"Loading..."})]}):null,"data"===d.type&&d.shouldEnforceMultiplayerLimit?(0,r.jsx)(U,{modalState:_}):$]})]}),L&&V&&k?(0,r.jsx)(h.View,{clsx:J.default.searchContainer,children:(0,r.jsx)(N.default,{existingUsernames:V,onSubmit:r=>{if(I&&!T?.isSubscribed||g)return;y({productArea:"multiplayer",target:"invite_modal_invite_button",properties:{invitee:r,inviteMethod:(0,o.default)(r)?"email":"username"}});let i=new Set(("data"===d.type?[...d.collaboratorsByRepl.values()].map(({users:e})=>e).flat():[]).map(e=>e.username)),t="data"===d.type&&d.shouldEnforceMultiplayerLimit&&d.collaboratorCount>=d.collaboratorLimit&&!i.has(r),l={method:(0,o.default)(r)?u.MultiplayerInviteMethod.Email:u.MultiplayerInviteMethod.Username,value:r},n=()=>p({variables:{input:{replId:e,target:l,level:u.ReplPermissionLevel.Rw}}});t?v({type:"open",onUpgradeSuccess:n}):n()}})}):null,P?(0,r.jsx)(h.View,{clsx:J.default.emptyContainer,gap:16,py:16,justify:"start",children:(0,r.jsx)(h.View,{children:(0,r.jsx)(x.Text,{color:"dimmest",multiline:!1,children:"No one else is here"})})}):(0,r.jsxs)(W.ShadesSurface,{clsx:J.default.userList,elevate:!1,children:[E?.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Online",count:E.length||0,color:C.tokens.greenStrongest}),E.map(i=>i?(0,r.jsx)(D,{isPendingInvitation:!1,replId:e,canEditMultiplayers:L,user:i},i.id):null)]}):null,G?.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Offline",count:G.length||0,color:C.tokens.outlineStrongest}),G?.map(i=>i?(0,r.jsx)(D,{canEditMultiplayers:L,isPendingInvitation:!1,user:i,replId:e},i.id):null)]}):null,k?.multiplayerInvites.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Pending Invitations",count:k?.multiplayerInvites.length||0,color:C.tokens.outlineStrongest}),k.multiplayerInvites.map(i=>(0,r.jsx)(D,{canEditMultiplayers:L,replId:e,isPendingInvitation:!0,email:i.email},i.email))]}):null]})]})})},Q=e=>e.isUnifiedPlanEnabled?(0,r.jsx)(l.MultiplayerManagerV2,{...e}):(0,r.jsx)(H,{...e});var K=e.i(528326),X=e.i(145315);function Z({replId:e}){let t=(0,a.useRouter)(),l=(0,m.isInBonsaiWebview)(t),n=(0,q.useActiveUsers)(),[g,y]=(0,s.useState)(null),{data:j,loading:_}=(0,d.useTeamMultiplayerManagerMultiplayersQuery)({variables:{replId:e}}),v=j?.currentUser?.id||null,w=j?.getRepl.__typename==="Repl"?j.getRepl:null,{addOrInviteReplMultiplayer:b,loadingAddMutation:M}=(0,c.default)({isMobileApp:l,isTeam:!0,replId:e});if(w&&!w.owner)throw Error("Cannot manage members on anon repls");if(w?.owner&&w?.owner.__typename!=="Team")throw Error("Expect repl owned by a team");let S=w?.owner?.__typename==="Team"?w.owner:null,I=!S?.capabilities?.hasValidSubscription&&!S?.capabilities?.isBusinessPlan,R=(w?.collaborators??[]).reduce((e,r)=>{let{username:i}=r.user;return -1===e.indexOf(i)&&e.push(),e},[]),k=w?.multiplayerInvites,T=(w?.collaborators??[]).filter(e=>"guest"===e.type).map(e=>e.user),V=T.length,U=(w?.collaborators??[]).filter(e=>"member"===e.type).map(e=>e.user),O=(w?.collaborators??[]).filter(e=>"admin"===e.type).map(e=>e.user),L=O.some(e=>e.id===v),P=U.filter(e=>n.some(r=>r.id===e.id)),A=U.filter(e=>!n.some(r=>r.id===e.id)),E=w?.authorizations.editPermissions.isAuthorized??!1,G=w?.authorizations.inviteGuests.isAuthorized??!1;return _?(0,r.jsx)(W.ShadesSurface,{clsx:J.default.root,elevate:!1,gap:12,align:"stretch",grow:!0,shrink:!0,px:12,children:(0,r.jsxs)(h.View,{row:!0,gap:4,align:"center",grow:!0,justify:"center",children:[(0,r.jsx)(i.default,{color:C.tokens.foregroundDimmer}),(0,r.jsx)(x.Text,{color:"dimmer",multiline:!1,children:"Loading..."})]})}):(0,r.jsxs)(W.ShadesSurface,{clsx:J.default.root,elevate:!1,gap:12,align:"stretch",grow:!0,shrink:!0,px:12,children:[(0,r.jsx)(h.View,{row:!0,justify:"space-between",align:"center",clsx:{[J.default.headerMobile]:l},children:(0,r.jsx)(h.View,{row:!0,gap:4,align:"center",children:(0,r.jsx)(x.Text,{variant:"subheadDefault",multiline:!1,children:"Team Multiplayers"})})}),G?(0,r.jsx)(h.View,{clsx:J.default.searchContainer,children:(0,r.jsx)(N.default,{existingUsernames:R,onSubmit:r=>{if(!M){if((0,o.default)(r))return void y(r);b({variables:{input:{replId:e,target:{method:u.MultiplayerInviteMethod.Username,value:r},level:u.ReplPermissionLevel.Rw}}})}},isDisabled:_})}):null,!G&&I?(0,r.jsx)(h.View,{px:16,children:(0,r.jsx)(X.StatusBannerButton,{iconLeft:(0,r.jsx)(p.default,{}),text:`You can add people to this App by inviting them to the "${S?.displayName}" Friends Team.`,href:`/teams/${S?.username}`,target:"_blank"})}):null,(0,r.jsx)(K.Modal,{isOpen:!!g,onRequestClose:()=>y(null),children:g?(0,r.jsx)(f,{email:g,onInvite:()=>{b({variables:{input:{replId:e,target:{method:u.MultiplayerInviteMethod.Email,value:g},level:u.ReplPermissionLevel.Rw}}}),y(null)},onCancel:()=>y(null)}):null}),(0,r.jsxs)(W.ShadesSurface,{clsx:J.default.userList,elevate:!1,children:[k?.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Pending Invitations",color:C.tokens.outlineStrongest,count:V}),k?.map(i=>(0,r.jsx)(D,{canEditMultiplayers:L||!1,email:i.email,isPendingInvitation:!0,replId:e},i.email))]}):null,T.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"External Guests",color:C.tokens.outlineStrongest,count:T?.length,tooltip:"External Guests are not members of your team and were invited via a Join Link or by username."}),T.map(i=>(0,r.jsx)(D,{canEditMultiplayers:L||!1,isPendingInvitation:!1,replId:e,user:i},i.id))]}):null,P.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Online Members",color:C.tokens.greenStrongest,count:P?.length}),P.map(i=>(0,r.jsx)(D,{isPendingInvitation:!1,canEditMultiplayers:!!L,replId:e,user:i},i.id))]}):null,A.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Offline Members",color:C.tokens.outlineStrongest,count:A?.length}),A.map(i=>(0,r.jsx)(D,{isPendingInvitation:!1,canEditMultiplayers:!!L,replId:e,user:i},i.id))]}):null,O.length?(0,r.jsxs)(h.View,{gap:8,children:[(0,r.jsx)(F,{title:"Admins",color:C.tokens.accentPrimaryStronger,count:O.length}),O.map(i=>(0,r.jsx)(D,{canEditMultiplayers:!1,isPendingInvitation:!1,user:i,replId:e},i.id))]}):null,E||_?null:(0,r.jsx)(x.Text,{color:"dimmer",variant:"small",multiline:!1,children:"Only admins can add and remove members to multiplayer"})]})]})}var ee=e.i(903790),er=e.i(127384),ei=e.i(475157);let et=(0,C.cvarsFrom)("InviteDialogV2.module.css",["--header-height"]),el=({replId:e,handleUpgradeTriggered:a,isTeamRepl:s,org:o,orgQueryResult:u})=>{let d;return d=o&&u?u.loading?(0,r.jsx)(h.View,{px:12,align:"center",justify:"center",children:(0,r.jsx)(i.default,{})}):(0,r.jsx)(n.OrgReplPermissionsV2,{queryResult:u}):s?(0,r.jsx)(Z,{replId:e}):(0,r.jsx)(l.MultiplayerManagerV2,{replId:e,handleUpgradeTriggered:a}),(0,r.jsxs)(W.ShadesSurface,{clsx:ei.default.self,elevate:!1,background:!0,pt:12,pb:8,gap:12,align:"stretch",grow:!0,shrink:!0,style:{[et.headerHeight]:`${er.HEADER_HEIGHT}px`},children:[d,o?null:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(ee.DividerH,{}),(0,r.jsx)(t.default,{replId:e})]})]})};var en=e.i(182697),ea=e.i(399245),es=e.i(882848),eo=e.i(416298),eu=e.i(320216),ed=e.i(20639),ep=e.i(415541),ec=e.i(709485),em=e.i(580519),eg=e.i(528710),ex=e.i(327391),eh=e.i(295132);let ey=()=>(0,r.jsxs)(h.View,{row:!0,gap:12,children:[(0,r.jsx)(h.View,{clsx:eh.default.globeIconContainer,children:(0,r.jsx)(ea.default,{color:C.tokens.accentPrimaryStrongest,size:20})}),(0,r.jsxs)(h.View,{children:[(0,r.jsx)(x.Text,{clsx:eh.default.title,id:"link-switch-label",multiline:!1,children:"Private join link"}),(0,r.jsx)(x.Text,{variant:"small",color:"dimmest",multiline:!1,children:"Anyone with this link can edit files"})]})]});function ef({replId:e}){let{showConfirm:t,showError:l}=(0,eu.default)(),{data:n,loading:a,error:s,refetch:o}=(0,en.useMultiplayerInviteUrlQuery)({variables:{replId:e}}),[u,d]=(0,en.useMultiplayerRefreshInviteUrlMutation)({variables:{replId:e},onError:e=>l(e.message),onCompleted:()=>t("Join link created")}),[p,c]=(0,en.useDeleteMultiplayerInviteUrlMutation)({variables:{replId:e},onError:e=>l(e.message),onCompleted:e=>{"UserError"===e.deleteMultiplayerInviteLink.__typename?l(e.deleteMultiplayerInviteLink.message):"Repl"===e.deleteMultiplayerInviteLink.__typename&&t("Join link deleted")}}),m=n?.getRepl?.__typename==="Repl"?n.getRepl:null,g=d.loading||c.loading,y=n?.getRepl?.__typename==="Repl"&&m?.owner?.__typename==="Team",f=n?.getRepl?.__typename==="Repl"&&m?.owner?.__typename==="Team"&&m?.owner.capabilities?.isBusinessPlan&&m?.owner.capabilities?.hasValidSubscription,j=n?.getRepl?.__typename==="Repl"&&m?.inviteUrl&&1?window.location.origin+m?.inviteUrl:null;return a||y&&!f?null:s?(0,r.jsxs)(h.View,{gap:12,px:12,children:[(0,r.jsxs)(h.View,{row:!0,justify:"space-between",children:[(0,r.jsx)(ey,{}),(0,r.jsx)(ex.Switch,{isSelected:!1,isDisabled:!0,"aria-labelledby":"link-switch-label"})]}),(0,r.jsx)(X.StatusBannerButton,{clsx:eh.default.textAlignLeft,iconLeft:(0,r.jsx)(eo.default,{color:C.tokens.accentNegativeStrongest}),colorway:"negative",text:"Error loading join link. Click here to try again, or contact support.",onClick:()=>o({replId:e})})]}):(0,r.jsxs)(h.View,{gap:12,px:12,children:[(0,r.jsxs)(h.View,{row:!0,justify:"space-between",children:[(0,r.jsx)(ey,{}),a?(0,r.jsxs)(h.View,{row:!0,gap:4,align:"center",children:[(0,r.jsx)(i.default,{color:C.tokens.foregroundDimmer}),(0,r.jsx)(x.Text,{color:"dimmer",multiline:!1,children:"Loading..."})]}):(0,r.jsx)(ex.Switch,{isSelected:!!j,isDisabled:g,onChange:e=>{g||(e?u():p())},"aria-labelledby":"link-switch-label"})]}),!a&&j?(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(W.ShadesSurface,{clsx:eh.default.inviteUrlContainer,elevate:!1,children:[(0,r.jsx)(eg.Input,{type:"url",readOnly:!0,disabled:!0,value:g?"Loading...":j,clsx:eh.default.input}),(0,r.jsx)(em.CopyButton,{textToCopy:j,onClick:()=>{j?((0,ed.default)(j),(0,ep.track)(ec.events.JOIN_LINK_COPIED,{replId:m?.id,isTeamRepl:y,source:"replEnvironment"}),t("Link copied")):l("Could not copy link")},tooltipSuccessText:"Copied to clipboard",text:"Copy join link",iconLeft:(0,r.jsx)(es.default,{}),clsx:eh.default.copyToClipboard,colorway:"primary",disabled:g})]}),(0,r.jsx)(h.View,{children:(0,r.jsxs)(x.Text,{color:"dimmer",variant:"small",multiline:!1,children:["Want to revoke access to this link?"," ",(0,r.jsx)("a",{clsx:eh.default.link,role:"button",tabIndex:0,onKeyDown:e=>{"Enter"===e.key&&(e.preventDefault(),g||u())},onClick:e=>{e.preventDefault(),g||u()},children:"Generate a new link"})]})})]}):null]})}function ej({replId:e,isUnifiedPlanEnabled:i=!1}){return i?(0,r.jsx)(t.default,{replId:e}):(0,r.jsx)(ef,{replId:e})}var e_=e.i(19882),ev=e.i(147500);let ew=(0,C.cvarsFrom)("InviteDialog.module.css",["--header-height"]);e.s(["default",0,({replId:e,handleUpgradeTriggered:i,isTeamRepl:t,org:l,isUnifiedPlanEnabled:n=!1,orgQueryResult:a})=>{let s;return n?(0,r.jsx)(el,{replId:e,handleUpgradeTriggered:i,isTeamRepl:t,org:l,orgQueryResult:a}):(s=l?(0,r.jsx)(e_.OrgReplPermissions,{replId:e}):t?(0,r.jsx)(Z,{replId:e}):(0,r.jsx)(Q,{replId:e,handleUpgradeTriggered:i,isUnifiedPlanEnabled:n}),(0,r.jsxs)(h.View,{clsx:ev.default.self,py:12,gap:12,align:"stretch",grow:!0,shrink:!0,br:8,style:{[ew.headerHeight]:`${er.HEADER_HEIGHT}px`},children:[s,l?null:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(ee.DividerH,{}),(0,r.jsx)(ej,{replId:e,isUnifiedPlanEnabled:n})]})]}))}],495662)}]);
+
+//# debugId=ae508556-02ef-20af-4783-6f034f945ca1
+//# sourceMappingURL=131700l64ssqc.js.map

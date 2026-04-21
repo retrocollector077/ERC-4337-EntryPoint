@@ -1,0 +1,153 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="67c53b12-6cf8-6e25-25a5-8ea4e3e3af23")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,894924,e=>{"use strict";e.i(389959);var t=e.i(541793),r=e.i(15442);let i=(0,t.atom)(!1),n=(0,t.atom)(null);e.s(["queueDrawerIsOpenAtom",0,i,"useEditingQueueItemId",0,()=>(0,r.useValue)(n),"useIsEditingQueueItem",0,()=>null!==(0,r.useValue)(n),"useQueueIsOpen",0,()=>(0,r.useValue)(i),"useSetEditingQueueItemId",0,()=>(0,r.useSet)(n),"useSetQueueIsOpen",0,()=>(0,r.useSet)(i)])},211389,349621,e=>{"use strict";e.i(619378),e.i(421326),e.i(880132),e.i(68172);var t=e.i(276385),r=e.i(389959);e.i(242933);var i=e.i(279606);e.i(925218);var n=e.i(112077);let s=(0,r.createContext)(null);e.s(["NewArtifactRequestsProvider",0,function({children:e}){let o,u,a,l=(o=(0,n.useCreateObservable)(!1),u=(0,n.useCreateObservable)([]),a=(0,r.useMemo)(()=>i.Observable.from(u).select(e=>e.length>0),[u]),{isOpen:o,selectedKinds:u,hasSelected:a,toggle:()=>{o.update(e=>!e)},close:()=>{o.set(!1)},select:e=>{u.update(t=>[...t,e]),o.set(!1)},remove:e=>{u.update(t=>t.filter((t,r)=>r!==e))},clear:()=>{u.set([])},buildOutputRequestKinds:()=>{let e=u.current;if(0!==e.length)return e.map(e=>({kind:e}))}});return(0,t.jsx)(s.Provider,{value:l,children:e})},"useNewArtifactRequests",0,function(){let e=(0,r.useContext)(s);if(!e)throw Error("useNewArtifactRequests must be used within a NewArtifactRequestsProvider");return e}],349621),e.s([],211389)},463358,e=>{"use strict";var t=e.i(862927),r=e.i(973245);let i=r.gql`
+    query GitAuth($input: GitProviderContextInput) {
+  currentUser {
+    id
+    gitHubInfo {
+      accessToken
+    }
+    gitHubInfoV2(input: $input) {
+      accessToken
+    }
+    bitbucketInfo(input: $input) {
+      accessToken
+    }
+  }
+}
+    `;var n=e.i(960933);let s=n.Type.Object({id:n.Type.String(),user_id:n.Type.Number(),ssh_hostname:n.Type.String(),token:n.Type.String()});var o=e.i(968323),u=e.i(423310),a=e.i(429843),l=e.i(871752);let c=["http:","https:","vscode:"];async function d({replId:e}){let r=await (0,o.tryCatchAsync)(()=>(0,l.postJson)(`/data/repls/${e}/get_ssh_token`));return r.error?{type:"error",message:r.error.toString()}:t.Value.Check(s,r.value)?{type:"success",data:r.value}:{type:"error",message:"Invalid JSON"}}async function p(e){if(!u.apolloClient)throw Error("Expected apollo");let{data:t}=await u.apolloClient.query({query:i,variables:{input:{orgId:e}}});if(!t?.currentUser)throw Error("Expected current user");return t.currentUser}function f(){document.activeElement instanceof HTMLElement&&document.activeElement.blur()}e.s(["default",0,function({container:e,fs:t,openMultipleFiles:r,openMultipleURLs:i,enableReplspaceSshTokenPassthrough:n=!1}){let s=new Set,o=!1,u=null;return e.openChannel({service:"open",name:"open"},({channel:e})=>{e.onCommand(e=>{if("replspaceApiOpenMultipleFiles"===e.body){if(!e.replspaceApiOpenMultipleFiles)throw Error("Expected replspaceApiOpenMultipleFiles");let{files:t,urls:n}=e.replspaceApiOpenMultipleFiles,s=n.flatMap(e=>{let t;try{t=new URL(e)}catch{return[]}return c.includes(t.protocol)?[t]:[]});r&&t.length>0&&(f(),r({paths:t})),i&&s.length>0&&(f(),i({urls:s.map(e=>e.toString())}))}})}),e.openChannel({service:"git",name:"git"},({channel:e})=>(e.onCommand(async i=>{switch(i.body){case"replspaceApiOpenFile":{if(!i.replspaceApiOpenFile)throw Error("Expected replspaceApiOpenFile");let{file:n,waitForClose:s,nonce:o}=i.replspaceApiOpenFile;if(r){if(f(),r({paths:[n]}),!s||!u)return;await u(n)}else{if(!n.endsWith(".git/COMMIT_EDITMSG")){s&&e.send({replspaceApiCloseFile:{file:n,nonce:o}}),window.alert(`tried to open ${n} but failed`);return}let r=window.prompt("Enter a commit message");if(await t.writeFile(n,r??""),!s)return}if(await t.flush(),"open"!==e.status)return;e.send({replspaceApiCloseFile:{file:n,nonce:o}});return}case"replspaceApiGetGitHubToken":{if(!i.replspaceApiGetGitHubToken)throw Error("Expected replspaceApiGetGitHubToken");let t=()=>{"open"===e.status&&e.send({replspaceApiGitHubToken:{token:"",nonce:i.replspaceApiGetGitHubToken?.nonce}})},r=await p();if(null==r.gitHubInfoV2&&null==r.gitHubInfo)return void t();if(!s.size){t(),a.logger.error("Got a replspaceApiGetGitHubToken command but no confirm listener is set up");return}let n=()=>{"open"===e.status&&e.send({replspaceApiGitHubToken:{token:r.gitHubInfoV2?.accessToken??r.gitHubInfo?.accessToken,nonce:i.replspaceApiGetGitHubToken?.nonce}})};if(o)return void n();let u=!1,l=()=>{for(let e of s)e(null)};for(let e of s){if(u)break;e((e,r=!0)=>{if(!u){if(u=!0,!e){t(),l();return}r&&(o=e),n(),l()}})}return}case"replspaceApiGetBitbucketToken":{if(!i.replspaceApiGetBitbucketToken)throw Error("Expected replspaceApiGetBitbucketToken");let t=()=>{"open"===e.status&&e.send({replspaceApiBitbucketToken:{token:"",nonce:i.replspaceApiGetBitbucketToken?.nonce}})},r=await p();if(null==r.bitbucketInfo)return void t();if(!s.size){t(),a.logger.error("Got a replspaceApiGetBitbucketToken command but no confirm listener is set up");return}let n=()=>{"open"===e.status&&e.send({replspaceApiBitbucketToken:{token:r.bitbucketInfo?.accessToken,nonce:i.replspaceApiGetBitbucketToken?.nonce}})};if(o)return void n();let u=!1,l=()=>{for(let e of s)e(null)};for(let e of s){if(u)break;e((e,r=!0)=>{if(!u){if(u=!0,!e){t(),l();return}r&&(o=e),n(),l()}})}}}}),()=>{})),n&&e.openChannel({service:"sshtoken",name:"sshtoken"},({channel:e})=>{e.onCommand(async t=>{if(!t.replspaceApiSSHTokenGetRequest)throw Error("Expected replspaceApiSSHTokenGetRequest");let{nonce:r,replid:i}=t.replspaceApiSSHTokenGetRequest,n=t=>{"open"===e.status&&e.send({replspaceApiSSHTokenGetResponse:t})},s=await d({replId:i});if("open"===e.status){if("error"===s.type){n({token:"",nonce:r}),a.logger.error(s.message);return}n({token:s.data.token,nonce:r,sshHostname:s.data.ssh_hostname})}})}),{onConfirmSendToken(e){let t=t=>e(t);return s.add(t),()=>{s.delete(t)}},setWaitForFileClose:function(e){u=e}}},"fetchReplSshToken",0,d],463358)},949955,e=>{"use strict";var t,r=e.i(866408),i=e.i(205104),n=e.i(966983),s=((t={}).USER_JOIN="USER_JOIN",t.USER_LEAVE="USER_LEAVE",t.USERS_UPDATE="USERS_UPDATE",t.USER_OPENED_FILE="USER_OPENED_FILE",t),o=e.i(584888),u=e.i(383941);e.s(["default",0,function({container:e,onCommand:t}){let a=(0,r.default)();a.setMaxListeners(1/0);let l=[],c={},d=null;async function p(){return d||new Promise(e=>{a.once(s.USERS_UPDATE,()=>{if(!d)throw Error("Expected presenceChannel to be set");e(d)})})}return e.openChannel({service:"presence",name:"presencer"},({channel:e})=>(e.onCommand(e=>{t?.(e);let r={cmd:e,emitter:a,activeUsers:l,userIdToFile:c};switch(e.body){case"roster":!function({cmd:e,emitter:t,activeUsers:r,userIdToFile:i}){let n=e.roster;if(!n)return;let{user:a,files:l}=n;if(!a||!l)return;let c=new Set;r.splice(0,r.length),a.forEach(e=>{if(!e.id||!e.name||!e.roles||c.has(e.id))return;let t=l.filter(t=>t.userId===e.id).map(e=>{if(!e.session||!e.timestamp)throw Error("Expected session and associated with user");return{id:e.session,activeFile:e.file||null,timestamp:(0,o.convertTimestampToNumber)(e.timestamp)}});r.push({id:e.id,username:e.name,roles:e.roles,color:(0,u.getColorForName)(e.name),sessions:t}),c.add(e.id)}),r.forEach(e=>{i[e.id]=(0,o.getActiveFileForUser)(e)}),t.emit(s.USERS_UPDATE,[...r])}(r);break;case"join":!function({cmd:e,emitter:t,activeUsers:r,userIdToFile:i}){let a=e.join;if(!a.id||!a.name||!a.roles||!a.session)return;let l=r.find(e=>e.id===a.id),c=Math.floor(Date.now()/1e3),d=n.google.protobuf.Timestamp.create({seconds:c}),p=(0,o.convertTimestampToNumber)(d);if(l)l.sessions.some(e=>e.id===a.session)||l.sessions.push({id:a.session,activeFile:null,timestamp:p});else{let e={id:a.id,username:a.name,roles:a.roles,color:(0,u.getColorForName)(a.name),sessions:[{id:a.session,activeFile:null,timestamp:p}]};i[a.id]=null,r.push(e),t.emit(s.USER_JOIN,e),t.emit(s.USERS_UPDATE,[...r])}}(r);break;case"part":!function({cmd:e,emitter:t,activeUsers:r,userIdToFile:i}){if(!e.part||!e.part.id||!e.part.session)return;let{id:n,session:u}=e.part,a=r.findIndex(e=>e.id===n),l=r[a];if(1===l.sessions.length)r.splice(a,1),delete i[l.id],t.emit(s.USER_LEAVE,l),t.emit(s.USERS_UPDATE,[...r]);else{l.sessions=l.sessions.filter(e=>e.id!==u);let e=(0,o.getActiveFileForUser)(l);i[l.id]!==e&&(i[l.id]=e,t.emit(s.USER_OPENED_FILE,{user:l,file:e}))}}(r);break;case"fileOpened":!function({emitter:e,cmd:t,activeUsers:r,userIdToFile:i}){if(!t.fileOpened)return;let{userId:n,file:u,timestamp:a,session:l}=t.fileOpened,c=u||null;if(!n||!a)throw Error("Expected userId and timestamp associated with file opened command");let d=r.find(e=>e.id===n);if(!d)throw Error(`Expected user with ID ${n}`);let p=d.sessions.find(e=>e.id===l);if(!p)throw Error(`Expected session with ID ${p}`);p.activeFile=c,p.timestamp=(0,o.convertTimestampToNumber)(a),i[n]=c,e.emit(s.USER_OPENED_FILE,{user:d,file:c})}(r);break;case"sessionTimestampUpdated":!function({cmd:e,emitter:t,activeUsers:r,userIdToFile:i}){let n=e.sessionTimestampUpdated;if(!n.session||!n.timestamp)throw Error("Expected session and tiemstamp associated with update");let u=n.session,a=(0,o.getUserForSession)(u,r),l=i[a.id],c=a.sessions.find(e=>e.id===u);if(!c)throw Error(`Expected user ${a.id} to have a session with ID ${u}`);c.timestamp=(0,o.convertTimestampToNumber)(n.timestamp);let{activeFile:d}=c;d!==l&&(i[a.id]=d,t.emit(s.USER_OPENED_FILE,{user:a,file:d}))}(r)}}),d=e,()=>{d=null})),{onUserLeave:e=>(a.on(s.USER_LEAVE,e),()=>{a.removeListener(s.USER_LEAVE,e)}),onUserJoin:e=>(a.on(s.USER_JOIN,e),()=>{a.removeListener(s.USER_JOIN,e)}),onActiveUsersChange:e=>(a.on(s.USERS_UPDATE,e),()=>{a.removeListener(s.USERS_UPDATE,e)}),onUserOpenedFile:e=>(a.on(s.USER_OPENED_FILE,e),()=>{a.removeListener(s.USER_OPENED_FILE,e)}),getActiveFileForUser(e){let t=c[e];if(void 0===t)throw Error(`Expected file for user with ID ${e} to be defined`);return t},async updateOpenFile(e){(await p()).send({openFile:{file:e}})},async updateSessionTimestamp(){(await p()).send({updateSessionTimestamp:{}})},getActiveUsers:()=>l,getUserIdToFile:()=>c,getPathToUserIds(){let e=new Map;return l.forEach(({id:t})=>{let r=c[t];r&&function t(r,n){if(""===r)return;e.has(r)||e.set(r,[]);let s=e.get(r);if(!s)throw Error("Expected user Ids");s.some(e=>e===n)||(e.get(r)?.push(n),t((0,i.getParentPath)(r),n))}(r,t)}),e}}}],949955)},82775,e=>{"use strict";var t=e.i(389959),r=e.i(231693),i=e.i(464458),n=e.i(19004),s=e.i(416558),o=e.i(17609),u=e.i(748855),a=e.i(415541),l=e.i(101597),c=e.i(563654),d=e.i(478074),p=e.i(30083),f=e.i(540082),m=e.i(949955),S=e.i(463358),h=e.i(70);function E({onUnrecoverableError:e,openMultipleFiles:t,openMultipleURLs:r,enableReplspaceSshTokenPassthrough:i,onPresenceCommand:k,replId:g,ctx:v}){let A=(0,l.default)({onUnrecoverableError:e,ctx:v}),w=(0,c.default)({container:A}),I=(0,m.default)({container:A,onCommand:k}),_=(0,n.default)({container:A,fs:w,ctx:v}),b=(0,s.default)({container:A}),T=(0,u.default)({container:A,dotReplit:_}),C=(0,o.default)({container:A,track:a.track}),x=(0,S.default)({container:A,fs:w,openMultipleFiles:t,openMultipleURLs:r,enableReplspaceSshTokenPassthrough:i}),U=(0,f.createPortsService)({container:A,dotReplit:_}),R=(0,p.createLSPNixService)({container:A,toolchain:T,fs:w}),y=(0,d.default)({container:A,fs:w,replId:g}),L=(0,h.default)({container:A});return{presence:I,packager:C,container:A,fs:w,dotReplit:_,nixService:b,lspnix:R,git:y,replspaceApi:x,toolchain:T,ports:U,secrets:L}}e.s(["default",0,E,"useCreateServices",0,function(e){let[n,s]=(0,t.useState)(null);return(0,t.useEffect)(()=>{let t=(0,i.createSpanFromContext)(r.context.active(),"workspace.useCreateServices"),n=E({...e,ctx:t?.childCtx});return t?.span.end(),s(n),()=>{s(null),setTimeout(()=>{n.container.destroy()},500)}},[e]),n}])},798060,e=>{"use strict";var t=e.i(151027);e.s(["useOrgFlag",0,function({controlName:e,default:r}){let{flags:i}=(0,t.useCurrentUserStoredOrgContext)();return i[e]??r}])},346423,e=>{"use strict";var t=e.i(155865);e.s(["invariant",0,function(e,r,...i){if(void 0!==t.default&&void 0===r)throw Error("invariant requires an error message argument");if(!e){let e;if(void 0===r)e=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{let t=0;(e=Error(r.replace(/%s/g,function(){return i[t++]}))).name="Invariant Violation"}throw e.framesToPop=1,e}}])},565352,e=>{"use strict";let t=(0,e.i(389959).createContext)({dragDropManager:void 0});e.s(["DndContext",0,t])},288148,712755,e=>{"use strict";e.s(["FILE",0,"__NATIVE_FILE__","HTML",0,"__NATIVE_HTML__","TEXT",0,"__NATIVE_TEXT__","URL",0,"__NATIVE_URL__"],712755);var t=e.i(712755);e.s(["NativeTypes",0,t],288148)},551904,e=>{"use strict";var t=e.i(389959),r=e.i(541793),i=e.i(814563),n=e.i(826771),s=e.i(473072),o=e.i(489859),u=e.i(452317);let a=(0,i.createJSONStorage)(()=>({getItem:e=>o.default.get(e,"string"),setItem:(e,t)=>o.default.set(e,t),removeItem:e=>o.default.remove(e)})),l=(0,i.atomWithStorage)("areHiddenFilesVisible",!1,a),c=(0,r.atom)(null),d=(0,r.atom)((0,n.observableValue)(!1)),p=(0,r.atom)(!1),f=(0,r.atom)(void 0);(0,r.atom)([]);let m=(0,r.atom)(!1),S=(0,r.atom)(!1),h=(0,r.atom)(!1),E=(0,r.atom)(!1),k=(0,r.atom)(!1);e.s(["useAreHiddenFilesVisible",0,function(){return(0,u.useValue)(l)},"useAuthBlueprint",0,function(){let e=(0,s.default)(),r=e?`auth-blueprint-approved:${e}`:null;return[!!r&&"true"===o.default.get(r,"string"),(0,t.useCallback)(e=>{r&&o.default.set(r,e?"true":"false")},[r])]},"useCookieWarningBannerDismissed",0,function(){return(0,u.useValue)(p)},"useGetFileRenameInProgress",0,function(){return(0,u.useGet)(c)},"useGetHasCommitData",0,function(){return(0,u.useGet)(E)},"useHasCommitData",0,function(){return(0,u.useValue)(E)},"useInProgressMockupToAppGraduation",0,function(){return(0,u.useValue)(k)},"useIsFirstCheckpointCompleted",0,function(){return(0,u.useValue)(h)},"useIsPublishClickedCompleted",0,function(){return(0,u.useValue)(m)},"useSetAreHiddenFilesVisible",0,function(){return(0,u.useSet)(l)},"useSetCookieWarningBannerDismissed",0,function(){return(0,u.useSet)(p)},"useSetFileRenameInProgress",0,function(){return(0,u.useSet)(c)},"useSetHasCommitData",0,function(){return(0,u.useSet)(E)},"useSetInProgressMockupToAppGraduation",0,function(){return(0,u.useSet)(k)},"useSetIsFirstCheckpointCompleted",0,function(){return(0,u.useSet)(h)},"useSetPublishClickedCompleted",0,function(){return(0,u.useSet)(m)},"useSetShouldShowRandomCheckpointSurvey",0,function(){return(0,u.useSet)(S)},"useShouldShowRandomCheckpointSurvey",0,function(){return(0,u.useValue)(S)},"useThreadFiltersPanelExpandedState",0,function(){return[(0,u.useValue)(f),(0,u.useSet)(f)]},"useWebviewPortOpenedObservable",0,function(){return(0,u.useValue)(d)}])},584888,e=>{"use strict";e.s(["convertTimestampToNumber",0,function(e){let{seconds:t,nanos:r}=e;return Number(t||0)+(r||0)/1e9},"getActiveFileForUser",0,function(e){for(let t of e.sessions.sort((e,t)=>e.timestamp-t.timestamp))if(t.activeFile)return t.activeFile;return null},"getUserForSession",0,function(e,t){let r=t.find(t=>t.sessions.some(t=>t.id===e));if(!r)throw Error(`Expected user with session ID ${e}`);return r}])},321164,e=>{"use strict";var t=e.i(973245),r=e.i(304277),i=e.i(566901),n=e.i(951262);let s={},o=t.gql`
+    fragment WorkspaceSharedSecret on SharedSecret {
+  id
+  name
+  description
+  version
+  timeCreated
+  timeUpdated
+  owner {
+    __typename
+    ... on User {
+      id
+    }
+  }
+  value
+  signedUrl
+}
+    `,u=t.gql`
+    fragment WorkspaceSharedSecretLink on SharedSecretLink {
+  id
+  alias
+  secret {
+    ...WorkspaceSharedSecret
+  }
+}
+    ${o}`,a=t.gql`
+    query SecretsPaneAuthorizations($replId: String!) {
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      id
+      isOwner
+      authorizations {
+        editSecrets {
+          isAuthorized
+          message
+        }
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,l=t.gql`
+    query WorkspaceSecrets($secretsInput: SecretsInput) {
+  currentUser {
+    id
+    secrets(input: $secretsInput) {
+      ... on SharedSecretConnection {
+        items {
+          ...WorkspaceSharedSecret
+        }
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          nextCursor
+          previousCursor
+        }
+      }
+    }
+  }
+}
+    ${o}`,c=t.gql`
+    query ReplLinkedSecrets($replId: String!) {
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      id
+      sharedSecretLinks {
+        ...WorkspaceSharedSecretLink
+      }
+    }
+  }
+}
+    ${u}`,d=t.gql`
+    query WorkspaceAndReplLinkedSecrets($replId: String!) {
+  currentUser {
+    id
+    secrets {
+      ... on SharedSecretConnection {
+        items {
+          ...WorkspaceSharedSecret
+        }
+      }
+    }
+  }
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      id
+      sharedSecretLinks {
+        ...WorkspaceSharedSecretLink
+      }
+    }
+  }
+}
+    ${o}
+${u}`,p=t.gql`
+    mutation LinkSharedSecrets($input: LinkSharedSecretsInput!) {
+  linkSharedSecrets(input: $input) {
+    ... on LinkSharedSecretsResult {
+      links {
+        ...WorkspaceSharedSecretLink
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${u}`,f=t.gql`
+    mutation UnlinkSharedSecrets($input: UnlinkSharedSecretsInput!) {
+  unlinkSharedSecrets(input: $input) {
+    ... on UnlinkSharedSecretsResult {
+      success
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,m=t.gql`
+    mutation UpdateSharedSecretLink($input: UpdateSharedSecretLinkInput!) {
+  updateSharedSecretLink(input: $input) {
+    ... on UpdateSharedSecretLinkOutput {
+      ...WorkspaceSharedSecretLink
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${u}`;e.s(["ReplLinkedSecretsDocument",0,c,"WorkspaceSecretsDocument",0,l,"useLinkSharedSecretsMutation",0,function(e){let t={...s,...e};return n.useMutation(p,t)},"useReplLinkedSecretsQuery",0,function(e){let t={...s,...e};return r.useQuery(c,t)},"useSecretsPaneAuthorizationsQuery",0,function(e){let t={...s,...e};return r.useQuery(a,t)},"useUnlinkSharedSecretsMutation",0,function(e){let t={...s,...e};return n.useMutation(f,t)},"useUpdateSharedSecretLinkMutation",0,function(e){let t={...s,...e};return n.useMutation(m,t)},"useWorkspaceAndReplLinkedSecretsLazyQuery",0,function(e){let t={...s,...e};return i.useLazyQuery(d,t)},"useWorkspaceSecretsQuery",0,function(e){let t={...s,...e};return r.useQuery(l,t)}])},7106,e=>{"use strict";var t=e.i(276385),r=e.i(389959),i=e.i(541793),n=e.i(208008),s=e.i(594709),o=e.i(936423),u=e.i(933302);e.s(["DeploymentProvider",0,function(e){let a=(0,u.useExperimentParam)("autoscale_default_machine_config","default_vcpu","2"),l=(0,u.useExperimentParam)("autoscale_default_machine_config","default_memory","4"),[c]=(0,r.useState)(()=>(function({container:e,fs:t,dotReplit:r,ports:o,secrets:u,defaultMachineConfig:a}){let l=(0,i.createStore)();l.set(n.containerAtom,e),l.set(n.fsAtom,t),l.set(n.dotReplitAtom,r),l.set(n.portsAtom,o),l.set(n.secretsAtom,u);let c=s.CPUValues.findIndex(e=>e.toString()===a.vcpu),d=s.RAMValues.findIndex(e=>e.toString()===a.memory);return c>=0&&d>=0&&(l.set(s.cpuIndexAtom,c),l.set(s.ramIndexAtom,d)),l})({fs:e.fs,container:e.container,dotReplit:e.dotReplit,ports:e.ports,secrets:e.secrets,defaultMachineConfig:{vcpu:a,memory:l}}));return(0,t.jsxs)(o.DeploymentContext.Provider,{value:c,children:[e.children,(0,t.jsx)(n.Init,{replId:e.replId,orgId:e.orgId})]})}],7106)},880132,e=>{"use strict";var t=e.i(276385),r=e.i(602686),i=e.i(436298),n=e.i(66742);e.s(["NewArtifactRequestAttachment",0,function({kind:e,onRemove:s}){let o=(0,i.getOutputKindConfig)(e),u=(0,i.getOutputKindLabel)(e);return(0,t.jsx)(n.PillButton,{variant:"muted",colorway:"blue",text:u,iconLeft:(0,t.jsx)(o.Icon,{}),iconRight:(0,t.jsx)(r.default,{size:12}),onClick:s,"aria-label":`Remove ${u} request`,"data-testid":"artifact-request-attachment"})}])},100753,e=>{e.v({noWrap:"NewArtifactRequestChip-module__df7f5q__noWrap"})},68172,e=>{"use strict";var t=e.i(276385),r=e.i(436298),i=e.i(8047),n=e.i(61732),s=e.i(100753);e.s(["NewArtifactRequestChip",0,function({kind:e,children:o}){let u=(0,r.getOutputKindConfig)(e),a=(0,r.getOutputKindLabel)(e);return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(n.View,{row:!0,align:"center",justify:"center",shrink:0,children:(0,t.jsx)(u.Icon,{color:u.color})}),(0,t.jsx)(i.Text,{variant:"small",color:"default",clsx:s.default.noWrap,children:a}),o]})}])},275598,e=>{e.v({closeButton:"NewArtifactPicker-module__ky2DLW__closeButton",container:"NewArtifactPicker-module__ky2DLW__container","slide-up":"NewArtifactPicker-module__ky2DLW__slide-up"})},619378,e=>{"use strict";var t=e.i(276385),r=e.i(389959),i=e.i(602686),n=e.i(436298),s=e.i(935506),o=e.i(919073),u=e.i(643484),a=e.i(488299),l=e.i(8047),c=e.i(61732),d=e.i(446929),p=e.i(275598);function f({kind:e,onSelect:i}){let o,a=(0,n.getOutputKindConfig)(e),l=(0,n.getOutputKindLabel)(e),c=(0,d.useAnimatedIcon)(e),p=(0,s.usePrefersReducedMotion)(),[m,S]=(0,r.useState)(!1);return o=c&&!p?(0,t.jsx)(c,{size:16,color:"currentColor",loop:!1,hovering:m}):(0,t.jsx)(a.Icon,{size:16}),(0,t.jsx)(u.Button,{text:l,iconLeft:o,onClick:()=>i(e),onHoverStart:()=>S(!0),onHoverEnd:()=>S(!1),"aria-label":`Select ${l}`,"data-testid":`artifact-picker-pill-${l.toLowerCase().replace(/\s+/g,"-")}`,borderRadius:"full"},(0,n.outputKindKey)(e))}e.s(["NewArtifactPicker",0,function({onSelect:e,onClose:s}){let u=(0,r.useRef)(null);return(0,r.useEffect)(()=>{let e=e=>{"Escape"===e.key&&s()};return window.addEventListener("keydown",e),()=>window.removeEventListener("keydown",e)},[s]),(0,t.jsxs)(o.ShadesSurface,{innerRef:u,clsx:p.default.container,p:16,pb:24,"data-testid":"artifact-picker",children:[(0,t.jsx)(l.Text,{variant:"subheadDefault",color:"default",children:"What do you want to create?"}),(0,t.jsx)(c.View,{clsx:p.default.closeButton,children:(0,t.jsx)(a.IconButton,{alt:"Close",size:24,onClick:s,children:(0,t.jsx)(i.default,{})})}),(0,t.jsx)(c.View,{pt:16,pb:8,children:(0,t.jsx)(c.View,{row:!0,wrap:!0,gap:8,justify:"center","data-testid":"artifact-picker-overview",children:n.SELECTABLE_ARTIFACT_KINDS.map(r=>(0,t.jsx)(f,{kind:r,onSelect:e},(0,n.outputKindKey)(r)))})})]})}])},421326,e=>{"use strict";var t=e.i(276385),r=e.i(61935),i=e.i(488299);e.s(["NewArtifactPickerButton",0,function(e){let{isOpen:n,onToggle:s,disabled:o}=e;return(0,t.jsx)(i.IconButton,{alt:"Create something new",size:24,onClick:s,disabled:o,filled:n,colorway:n?"blue":void 0,children:(0,t.jsx)(r.default,{})})}])},692785,e=>{"use strict";var t=e.i(276385),r=e.i(389959),i=e.i(737278);let n=(0,r.createContext)(null);e.s(["AiChatAttachmentsProvider",0,function({children:e,sessionId:r,uploadFiles:s,onError:o}){let u=(0,i.useAttachmentsImpl)({sessionId:r,uploadFiles:s,onError:o});return(0,t.jsx)(n.Provider,{value:u,children:e})},"useAiChatAttachments",0,function(){let e=(0,r.useContext)(n);if(!e)throw Error("useAiChatAttachments(must be used within an AiChatAttachmentsProvider");return e}])}]);
+
+//# debugId=67c53b12-6cf8-6e25-25a5-8ea4e3e3af23
+//# sourceMappingURL=0d-7kl0.~mfma.js.map
