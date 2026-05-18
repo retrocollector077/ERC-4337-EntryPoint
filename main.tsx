@@ -3,7 +3,7 @@ import __vite__cjsImport1_reactDom_client from "/@fs/home/runner/workspace/node_
 import App from "/src/App.tsx";
 import "/src/index.css";
 createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsxDEV(App, {}, void 0, false, {
-  fileName: "/home/runner/workspace/client/src/main.tsx?v=lrrChn1Nlm1Mh6AUfmtgk",
+  fileName: "/home/runner/workspace/client/src/main.tsx?v=kT45VKBtT-W2kiIe2OMYd",
   lineNumber: 5,
   columnNumber: 53
 }, this));
